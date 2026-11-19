@@ -1,0 +1,1440 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Forex Trading Indicators | Hunter V1 & Hunter V2</title>
+
+    <meta name="description"
+          content="Hunter V1 and Hunter V2 professional Forex trading indicators. Explore features, pricing and trading tools.">
+
+    <!-- Bootstrap -->
+    <link
+        href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+        rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            background: #06101d;
+            color: #fff;
+            font-family: Arial, sans-serif;
+        }
+
+        /* =========================
+           NAVBAR
+        ========================= */
+
+        .navbar {
+            background: rgba(4, 12, 24, 0.96);
+            border-bottom: 1px solid rgba(255,255,255,0.08);
+            backdrop-filter: blur(15px);
+        }
+
+        .navbar-brand {
+            color: #d4af37 !important;
+            font-weight: 800;
+            letter-spacing: 2px;
+        }
+
+        .nav-link {
+            color: #cbd5e1 !important;
+            margin-left: 15px;
+        }
+
+        .nav-link:hover {
+            color: #d4af37 !important;
+        }
+
+
+        /* =========================
+           HERO
+        ========================= */
+
+        .hero {
+            min-height: 620px;
+
+            display: flex;
+            align-items: center;
+
+            background:
+                linear-gradient(
+                    rgba(3,10,20,0.72),
+                    rgba(3,10,20,0.95)
+                ),
+                url("https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?auto=format&fit=crop&w=1800&q=80");
+
+            background-size: cover;
+            background-position: center;
+        }
+
+        .hero-content {
+            max-width: 850px;
+        }
+
+        .hero-label {
+            color: #d4af37;
+            font-size: 13px;
+            font-weight: 700;
+            letter-spacing: 5px;
+            text-transform: uppercase;
+        }
+
+        .hero h1 {
+            font-size: 65px;
+            font-weight: 900;
+            line-height: 1.05;
+            margin: 20px 0;
+        }
+
+        .hero h1 span {
+            color: #d4af37;
+        }
+
+        .hero p {
+            color: #a8b4c5;
+            font-size: 18px;
+            line-height: 1.8;
+            max-width: 720px;
+        }
+
+        .btn-gold {
+            display: inline-block;
+            background: #d4af37;
+            color: #07111f;
+            padding: 14px 28px;
+            border-radius: 10px;
+            font-weight: 800;
+            text-decoration: none;
+            transition: .3s;
+        }
+
+        .btn-gold:hover {
+            background: #f0d36a;
+            color: #07111f;
+            transform: translateY(-2px);
+        }
+
+        .btn-outline-gold {
+            display: inline-block;
+            border: 1px solid #d4af37;
+            color: #d4af37;
+            padding: 13px 28px;
+            border-radius: 10px;
+            font-weight: 700;
+            text-decoration: none;
+            margin-left: 10px;
+            transition: .3s;
+        }
+
+        .btn-outline-gold:hover {
+            background: #d4af37;
+            color: #07111f;
+        }
+
+
+        /* =========================
+           GENERAL
+        ========================= */
+
+        .section {
+            padding: 90px 0;
+        }
+
+        .section-label {
+            color: #d4af37;
+            font-size: 13px;
+            letter-spacing: 4px;
+            font-weight: 700;
+        }
+
+        .section-title {
+            font-size: 42px;
+            font-weight: 800;
+            margin-top: 10px;
+        }
+
+        .section-description {
+            color: #94a3b8;
+            max-width: 720px;
+            line-height: 1.8;
+        }
+
+
+        /* =========================
+           PRODUCT CARDS
+        ========================= */
+
+        .indicator-card {
+            height: 100%;
+
+            background:
+                linear-gradient(
+                    145deg,
+                    #111f32,
+                    #07111f
+                );
+
+            border: 1px solid rgba(255,255,255,0.08);
+
+            border-radius: 24px;
+
+            overflow: hidden;
+
+            transition: .35s;
+
+            box-shadow:
+                0 20px 60px rgba(0,0,0,0.25);
+        }
+
+        .indicator-card:hover {
+            transform: translateY(-8px);
+            border-color: rgba(212,175,55,0.6);
+        }
+
+
+        /* IMAGE */
+
+        .indicator-image {
+            height: 280px;
+
+            background-size: cover;
+            background-position: center;
+
+            position: relative;
+        }
+
+        .hunter-v1 {
+            background-image:
+                linear-gradient(
+                    rgba(0,0,0,0.15),
+                    rgba(0,0,0,0.75)
+                ),
+                url("https://images.unsplash.com/photo-1642790551116-18e150f248e7?auto=format&fit=crop&w=1200&q=80");
+        }
+
+        .hunter-v2 {
+            background-image:
+                linear-gradient(
+                    rgba(0,0,0,0.15),
+                    rgba(0,0,0,0.75)
+                ),
+                url("https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?auto=format&fit=crop&w=1200&q=80");
+        }
+
+
+        .version-badge {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+
+            background: #d4af37;
+            color: #07111f;
+
+            padding: 8px 15px;
+
+            border-radius: 30px;
+
+            font-size: 12px;
+            font-weight: 800;
+        }
+
+
+        /* CARD BODY */
+
+        .indicator-body {
+            padding: 30px;
+        }
+
+        .indicator-title {
+            font-size: 30px;
+            font-weight: 800;
+        }
+
+        .indicator-description {
+            color: #94a3b8;
+            line-height: 1.8;
+        }
+
+
+        /* FEATURES */
+
+        .feature-list {
+            list-style: none;
+            padding: 0;
+            margin: 25px 0;
+        }
+
+        .feature-list li {
+            padding: 9px 0;
+            color: #cbd5e1;
+        }
+
+        .feature-list i {
+            color: #d4af37;
+            margin-right: 10px;
+        }
+
+
+        /* PRICE */
+
+        .price-area {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+
+            margin-bottom: 25px;
+        }
+
+        .price {
+            color: #d4af37;
+            font-size: 38px;
+            font-weight: 900;
+        }
+
+        .old-price {
+            color: #64748b;
+            text-decoration: line-through;
+        }
+
+
+        /* =========================
+           COMPARISON
+        ========================= */
+
+        .comparison-wrapper {
+            background: #0b1829;
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 20px;
+            overflow: hidden;
+        }
+
+        .comparison-table {
+            width: 100%;
+            margin: 0;
+            color: #cbd5e1;
+        }
+
+        .comparison-table th {
+            background: #101f33;
+            color: #d4af37;
+            padding: 18px;
+            border-bottom: 1px solid #26364b;
+        }
+
+        .comparison-table td {
+            padding: 17px;
+            border-bottom: 1px solid rgba(255,255,255,0.06);
+        }
+
+        .check {
+            color: #22c55e;
+        }
+
+        .cross {
+            color: #ef4444;
+        }
+
+
+        /* =========================
+           PURCHASE
+        ========================= */
+
+        .purchase-box {
+            max-width: 600px;
+            margin: auto;
+
+            background:
+                linear-gradient(
+                    145deg,
+                    #121f32,
+                    #07111f
+                );
+
+            border: 1px solid #d4af37;
+
+            border-radius: 25px;
+
+            padding: 40px;
+
+            text-align: center;
+
+            box-shadow:
+                0 25px 80px rgba(0,0,0,0.35);
+        }
+
+        .purchase-price {
+            font-size: 55px;
+            font-weight: 900;
+            color: #d4af37;
+        }
+
+
+        /* =========================
+           DISCLAIMER
+        ========================= */
+
+        .disclaimer {
+            background: rgba(220,38,38,0.08);
+            border: 1px solid rgba(220,38,38,0.3);
+            border-radius: 15px;
+            padding: 25px;
+
+            color: #cbd5e1;
+            line-height: 1.7;
+        }
+
+        .disclaimer strong {
+            color: #ef4444;
+        }
+
+
+        /* =========================
+           FOOTER
+        ========================= */
+
+        footer {
+            background: #030b15;
+            border-top: 1px solid rgba(255,255,255,0.08);
+            padding: 40px 0;
+        }
+
+        footer p {
+            color: #64748b;
+            margin: 0;
+        }
+
+
+        /* =========================
+           RESPONSIVE
+        ========================= */
+
+        @media(max-width: 768px) {
+
+            .hero {
+                min-height: 600px;
+            }
+
+            .hero h1 {
+                font-size: 42px;
+            }
+
+            .section-title {
+                font-size: 32px;
+            }
+
+            .btn-outline-gold {
+                margin-left: 0;
+                margin-top: 12px;
+            }
+
+            .indicator-image {
+                height: 230px;
+            }
+
+            .purchase-price {
+                font-size: 42px;
+            }
+
+        }
+
+        /* =========================
+           ACCESS DURATION
+        ========================= */
+
+        .access-section {
+            margin-top: 30px;
+        }
+
+        .access-title span {
+            color: #d4af37;
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 3px;
+        }
+
+        .access-title h3 {
+            margin-top: 7px;
+            font-size: 20px;
+            font-weight: 800;
+        }
+
+        .duration-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 12px;
+            margin-top: 20px;
+        }
+
+        .duration-card {
+            position: relative;
+            padding: 18px 12px;
+            text-align: center;
+            background: #0b192b;
+            border: 1px solid #26364b;
+            border-radius: 14px;
+            cursor: pointer;
+            transition: .3s;
+        }
+
+        .duration-card:hover,
+        .duration-card.selected {
+            border-color: #d4af37;
+            background: linear-gradient(145deg, rgba(212,175,55,0.14), #0b192b);
+            transform: translateY(-2px);
+        }
+
+        .duration-icon {
+            width: 40px;
+            height: 40px;
+            margin: 0 auto 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 10px;
+            background: rgba(212,175,55,0.12);
+            color: #d4af37;
+        }
+
+        .duration-card h4 {
+            font-size: 13px;
+            font-weight: 800;
+            margin: 0;
+        }
+
+        .duration-card p {
+            color: #64748b;
+            font-size: 11px;
+            margin: 6px 0;
+        }
+
+        .duration-price {
+            color: #d4af37;
+            font-size: 18px;
+            font-weight: 800;
+        }
+
+        .popular-badge {
+            position: absolute;
+            top: -9px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #d4af37;
+            color: #07111f;
+            font-size: 8px;
+            font-weight: 900;
+            padding: 4px 8px;
+            border-radius: 20px;
+            white-space: nowrap;
+        }
+
+        .selected-plan {
+            margin-top: 18px;
+            padding: 15px 18px;
+            background: #081523;
+            border: 1px solid #26364b;
+            border-radius: 12px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .selected-plan small {
+            color: #64748b;
+            font-size: 9px;
+            letter-spacing: 2px;
+        }
+
+        .selected-plan h3 {
+            margin: 4px 0 0;
+            font-size: 16px;
+        }
+
+        .selected-price {
+            color: #d4af37;
+            font-size: 24px;
+            font-weight: 900;
+        }
+
+        @media(max-width: 500px) {
+            .duration-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<!-- =========================
+     NAVBAR
+========================= -->
+
+<nav class="navbar navbar-expand-lg navbar-dark sticky-top">
+
+    <div class="container">
+
+        <a class="navbar-brand" href="#">
+            FX<span style="color:white;">ACADEMY</span>
+        </a>
+
+        <button
+            class="navbar-toggler"
+            data-bs-toggle="collapse"
+            data-bs-target="#mainNav">
+
+            <span class="navbar-toggler-icon"></span>
+
+        </button>
+
+
+        <div
+            class="collapse navbar-collapse"
+            id="mainNav">
+
+            <ul class="navbar-nav ms-auto">
+
+                <li class="nav-item">
+                    <a class="nav-link" href="#">
+                        Home
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="#">
+                        Courses
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link active" href="#">
+                        Indicators
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="#">
+                        Expert Advisors
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="#">
+                        Contact
+                    </a>
+                </li>
+
+            </ul>
+
+        </div>
+
+    </div>
+
+</nav>
+
+
+
+<!-- =========================
+     HERO
+========================= -->
+
+<section class="hero">
+
+    <div class="container">
+
+        <div class="hero-content">
+
+            <div class="hero-label">
+                PROFESSIONAL FOREX INDICATORS
+            </div>
+
+            <h1>
+
+                Trade With
+                <span>Hunter</span>
+
+            </h1>
+
+            <p>
+
+                Discover Hunter V1 and Hunter V2 — two professional
+                trading indicators designed to help traders analyze
+                market structure, trends and potential trading setups.
+
+            </p>
+
+            <div class="mt-4">
+
+                <a
+                    href="#indicators"
+                    class="btn-gold">
+
+                    <i class="fa-solid fa-chart-line"></i>
+
+                    Explore Indicators
+
+                </a>
+
+                <a
+                    href="#compare"
+                    class="btn-outline-gold">
+
+                    Compare V1 & V2
+
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =========================
+     INDICATORS
+========================= -->
+
+<section
+    class="section"
+    id="indicators">
+
+    <div class="container">
+
+        <div class="text-center mb-5">
+
+            <span class="section-label">
+                HUNTER INDICATORS
+            </span>
+
+            <h2 class="section-title">
+                Choose Your Trading Tool
+            </h2>
+
+            <p class="section-description mx-auto">
+
+                Select the Hunter indicator that fits your trading
+                style and analysis requirements.
+
+            </p>
+
+        </div>
+
+
+        <div class="row g-4">
+
+
+            <!-- =====================
+                 HUNTER V1
+            ====================== -->
+
+            <div class="col-lg-6">
+
+                <div class="indicator-card">
+
+                    <div class="indicator-image hunter-v1">
+
+                        <span class="version-badge">
+                            HUNTER V1
+                        </span>
+
+                    </div>
+
+
+                    <div class="indicator-body">
+
+                        <h2 class="indicator-title">
+                            Hunter V1
+                        </h2>
+
+                        <p class="indicator-description">
+
+                            A streamlined market-analysis indicator
+                            designed to help identify trend direction
+                            and potential trading setups.
+
+                        </p>
+
+
+                        <ul class="feature-list">
+
+                            <li>
+                                <i class="fa-solid fa-check"></i>
+                                Trend Direction Analysis
+                            </li>
+
+                            <li>
+                                <i class="fa-solid fa-check"></i>
+                                Buy & Sell Signals
+                            </li>
+
+                            <li>
+                                <i class="fa-solid fa-check"></i>
+                                Market Structure Support
+                            </li>
+
+                            <li>
+                                <i class="fa-solid fa-check"></i>
+                                Customizable Settings
+                            </li>
+
+                            <li>
+                                <i class="fa-solid fa-check"></i>
+                                Multiple Timeframe Analysis
+                            </li>
+
+                            <li>
+                                <i class="fa-solid fa-check"></i>
+                                MT4 / MT5 Compatible
+                            </li>
+
+                        </ul>
+
+
+
+                        <div class="access-section">
+
+                            <div class="access-title">
+                                <span>ACCESS DURATION</span>
+                                <h3>Choose Your License</h3>
+                            </div>
+
+                            <div class="duration-grid">
+
+                                <div class="duration-card selected"
+                                     onclick="selectDuration(this, 'hunter-v1', '1month', 1999)">
+                                    <div class="duration-icon">
+                                        <i class="fa-solid fa-calendar"></i>
+                                    </div>
+                                    <h4>ONE MONTH</h4>
+                                    <p>30 Days Access</p>
+                                    <div class="duration-price">₹1,999</div>
+                                </div>
+
+                                <div class="duration-card"
+                                     onclick="selectDuration(this, 'hunter-v1', '6month', 4999)">
+                                    <div class="duration-icon">
+                                        <i class="fa-solid fa-calendar-days"></i>
+                                    </div>
+                                    <h4>SIX MONTHS</h4>
+                                    <p>180 Days Access</p>
+                                    <div class="duration-price">₹4,999</div>
+                                </div>
+
+                                <div class="duration-card popular"
+                                     onclick="selectDuration(this, 'hunter-v1', '1year', 7999)">
+                                    <div class="popular-badge">MOST POPULAR</div>
+                                    <div class="duration-icon">
+                                        <i class="fa-solid fa-star"></i>
+                                    </div>
+                                    <h4>ONE YEAR</h4>
+                                    <p>365 Days Access</p>
+                                    <div class="duration-price">₹7,999</div>
+                                </div>
+
+                                <div class="duration-card"
+                                     onclick="selectDuration(this, 'hunter-v1', 'lifetime', 12999)">
+                                    <div class="duration-icon">
+                                        <i class="fa-solid fa-infinity"></i>
+                                    </div>
+                                    <h4>LIFETIME</h4>
+                                    <p>Unlimited Access</p>
+                                    <div class="duration-price">₹12,999</div>
+                                </div>
+
+                            </div>
+
+                            <div class="selected-plan">
+                                <div>
+                                    <small>SELECTED PLAN</small>
+                                    <h3 id="selectedDuration-hunter-v1">ONE MONTH</h3>
+                                </div>
+                                <div class="selected-price" id="selectedPrice-hunter-v1">₹1,999</div>
+                            </div>
+
+                            <a href="checkout.html?product=hunter-v1&duration=1month&price=1999"
+                               id="buyDurationButton-hunter-v1"
+                               class="btn-gold w-100 text-center mt-3">
+                                <i class="fa-solid fa-cart-shopping"></i>
+                                BUY NOW
+                            </a>
+
+                        </div>
+
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- =====================
+                 HUNTER V2
+            ====================== -->
+
+            <div class="col-lg-6">
+
+                <div class="indicator-card">
+
+                    <div class="indicator-image hunter-v2">
+
+                        <span class="version-badge">
+                            HUNTER V2
+                        </span>
+
+                    </div>
+
+
+                    <div class="indicator-body">
+
+                        <h2 class="indicator-title">
+                            Hunter V2
+                        </h2>
+
+                        <p class="indicator-description">
+
+                            An enhanced version of the Hunter system
+                            with additional analysis tools and
+                            configurable trading features.
+
+                        </p>
+
+
+                        <ul class="feature-list">
+
+                            <li>
+                                <i class="fa-solid fa-check"></i>
+                                Advanced Trend Analysis
+                            </li>
+
+                            <li>
+                                <i class="fa-solid fa-check"></i>
+                                Enhanced Buy & Sell Signals
+                            </li>
+
+                            <li>
+                                <i class="fa-solid fa-check"></i>
+                                Market Structure Detection
+                            </li>
+
+                            <li>
+                                <i class="fa-solid fa-check"></i>
+                                Custom Signal Filters
+                            </li>
+
+                            <li>
+                                <i class="fa-solid fa-check"></i>
+                                Multiple Timeframe Analysis
+                            </li>
+
+                            <li>
+                                <i class="fa-solid fa-check"></i>
+                                MT4 / MT5 Compatible
+                            </li>
+
+                        </ul>
+
+
+
+                        <div class="access-section">
+
+                            <div class="access-title">
+                                <span>ACCESS DURATION</span>
+                                <h3>Choose Your License</h3>
+                            </div>
+
+                            <div class="duration-grid">
+
+                                <div class="duration-card selected"
+                                     onclick="selectDuration(this, 'hunter-v2', '1month', 1999)">
+                                    <div class="duration-icon">
+                                        <i class="fa-solid fa-calendar"></i>
+                                    </div>
+                                    <h4>ONE MONTH</h4>
+                                    <p>30 Days Access</p>
+                                    <div class="duration-price">₹1,999</div>
+                                </div>
+
+                                <div class="duration-card"
+                                     onclick="selectDuration(this, 'hunter-v2', '6month', 4999)">
+                                    <div class="duration-icon">
+                                        <i class="fa-solid fa-calendar-days"></i>
+                                    </div>
+                                    <h4>SIX MONTHS</h4>
+                                    <p>180 Days Access</p>
+                                    <div class="duration-price">₹4,999</div>
+                                </div>
+
+                                <div class="duration-card popular"
+                                     onclick="selectDuration(this, 'hunter-v2', '1year', 7999)">
+                                    <div class="popular-badge">MOST POPULAR</div>
+                                    <div class="duration-icon">
+                                        <i class="fa-solid fa-star"></i>
+                                    </div>
+                                    <h4>ONE YEAR</h4>
+                                    <p>365 Days Access</p>
+                                    <div class="duration-price">₹7,999</div>
+                                </div>
+
+                                <div class="duration-card"
+                                     onclick="selectDuration(this, 'hunter-v2', 'lifetime', 12999)">
+                                    <div class="duration-icon">
+                                        <i class="fa-solid fa-infinity"></i>
+                                    </div>
+                                    <h4>LIFETIME</h4>
+                                    <p>Unlimited Access</p>
+                                    <div class="duration-price">₹12,999</div>
+                                </div>
+
+                            </div>
+
+                            <div class="selected-plan">
+                                <div>
+                                    <small>SELECTED PLAN</small>
+                                    <h3 id="selectedDuration-hunter-v2">ONE MONTH</h3>
+                                </div>
+                                <div class="selected-price" id="selectedPrice-hunter-v2">₹1,999</div>
+                            </div>
+
+                            <a href="checkout.html?product=hunter-v2&duration=1month&price=1999"
+                               id="buyDurationButton-hunter-v2"
+                               class="btn-gold w-100 text-center mt-3">
+                                <i class="fa-solid fa-cart-shopping"></i>
+                                BUY NOW
+                            </a>
+
+                        </div>
+
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =========================
+     COMPARISON
+========================= -->
+
+<section
+    class="section"
+    id="compare">
+
+    <div class="container">
+
+        <div class="text-center mb-5">
+
+            <span class="section-label">
+                COMPARISON
+            </span>
+
+            <h2 class="section-title">
+                HUNTER V1 vs HUNTER V2
+            </h2>
+
+            <p class="section-description mx-auto">
+
+                Compare the available features before choosing
+                your indicator.
+
+            </p>
+
+        </div>
+
+
+        <div class="comparison-wrapper">
+
+            <div class="table-responsive">
+
+                <table class="comparison-table">
+
+                    <thead>
+
+                        <tr>
+
+                            <th>
+                                FEATURE
+                            </th>
+
+                            <th>
+                                HUNTER V1
+                            </th>
+
+                            <th>
+                                HUNTER V2
+                            </th>
+
+                        </tr>
+
+                    </thead>
+
+
+                    <tbody>
+
+                        <tr>
+
+                            <td>
+                                Trend Analysis
+                            </td>
+
+                            <td>
+                                <i class="fa-solid fa-check check"></i>
+                            </td>
+
+                            <td>
+                                <i class="fa-solid fa-check check"></i>
+                            </td>
+
+                        </tr>
+
+
+                        <tr>
+
+                            <td>
+                                Buy / Sell Signals
+                            </td>
+
+                            <td>
+                                <i class="fa-solid fa-check check"></i>
+                            </td>
+
+                            <td>
+                                <i class="fa-solid fa-check check"></i>
+                            </td>
+
+                        </tr>
+
+
+                        <tr>
+
+                            <td>
+                                Market Structure
+                            </td>
+
+                            <td>
+                                <i class="fa-solid fa-check check"></i>
+                            </td>
+
+                            <td>
+                                <i class="fa-solid fa-check check"></i>
+                            </td>
+
+                        </tr>
+
+
+                        <tr>
+
+                            <td>
+                                Custom Filters
+                            </td>
+
+                            <td>
+                                <i class="fa-solid fa-xmark cross"></i>
+                            </td>
+
+                            <td>
+                                <i class="fa-solid fa-check check"></i>
+                            </td>
+
+                        </tr>
+
+
+                        <tr>
+
+                            <td>
+                                Advanced Signals
+                            </td>
+
+                            <td>
+                                <i class="fa-solid fa-xmark cross"></i>
+                            </td>
+
+                            <td>
+                                <i class="fa-solid fa-check check"></i>
+                            </td>
+
+                        </tr>
+
+
+                        <tr>
+
+                            <td>
+                                Multi-Timeframe
+                            </td>
+
+                            <td>
+                                <i class="fa-solid fa-check check"></i>
+                            </td>
+
+                            <td>
+                                <i class="fa-solid fa-check check"></i>
+                            </td>
+
+                        </tr>
+
+
+                        <tr>
+
+                            <td>
+                                MT4 / MT5
+                            </td>
+
+                            <td>
+                                <i class="fa-solid fa-check check"></i>
+                            </td>
+
+                            <td>
+                                <i class="fa-solid fa-check check"></i>
+                            </td>
+
+                        </tr>
+
+
+                        <tr>
+
+                            <td>
+                                Technical Support
+                            </td>
+
+                            <td>
+                                <i class="fa-solid fa-check check"></i>
+                            </td>
+
+                            <td>
+                                <i class="fa-solid fa-check check"></i>
+                            </td>
+
+                        </tr>
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =========================
+     BUNDLE
+========================= -->
+
+<section class="section">
+
+    <div class="container">
+
+        <div class="purchase-box">
+
+            <span class="section-label">
+                HUNTER BUNDLE
+            </span>
+
+            <h2 class="mt-3">
+                Hunter V1 + Hunter V2
+            </h2>
+
+            <p class="section-description mx-auto">
+
+                Get both indicators together and use the tools
+                according to your preferred market-analysis workflow.
+
+            </p>
+
+
+            <div class="purchase-price">
+                ₹10,999
+            </div>
+
+            <div
+                style="
+                color:#64748b;
+                text-decoration:line-through;
+                margin-bottom:25px;
+                ">
+
+                ₹20,998
+
+            </div>
+
+
+            <ul
+                class="feature-list text-start">
+
+                <li>
+                    <i class="fa-solid fa-check"></i>
+                    Hunter V1
+                </li>
+
+                <li>
+                    <i class="fa-solid fa-check"></i>
+                    Hunter V2
+                </li>
+
+                <li>
+                    <i class="fa-solid fa-check"></i>
+                    Installation Support
+                </li>
+
+                <li>
+                    <i class="fa-solid fa-check"></i>
+                    Product Updates
+                </li>
+
+                <li>
+                    <i class="fa-solid fa-check"></i>
+                    Technical Support
+                </li>
+
+            </ul>
+
+
+            <a
+                href="checkout.html?product=hunter-bundle"
+                class="btn-gold w-100">
+
+                <i class="fa-solid fa-cart-shopping"></i>
+
+                BUY HUNTER BUNDLE
+
+            </a>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =========================
+     DISCLAIMER
+========================= -->
+
+<section class="section pt-0">
+
+    <div class="container">
+
+        <div class="disclaimer">
+
+            <strong>
+                ⚠ RISK DISCLOSURE
+            </strong>
+
+            <br><br>
+
+            Forex and CFD trading involves substantial risk of loss
+            and may not be suitable for all investors. Trading
+            indicators are analytical tools and do not guarantee
+            profitable trades or prevent losses.
+
+            <br><br>
+
+            Past performance, backtests and hypothetical results
+            are not guarantees of future performance. Always
+            evaluate the risks and use appropriate risk management
+            before trading.
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =========================
+     FOOTER
+========================= -->
+
+<footer>
+
+    <div class="container text-center">
+
+        <p>
+            © 2026 FX Academy. All Rights Reserved.
+        </p>
+
+    </div>
+
+</footer>
+
+
+
+<script
+    src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js">
+</script>
+
+<script>
+
+function selectDuration(card, product, duration, price) {
+
+    const cardContainer = card.parentElement;
+
+    cardContainer.querySelectorAll('.duration-card').forEach(function(item) {
+        item.classList.remove('selected');
+    });
+
+    card.classList.add('selected');
+
+    let durationName = '';
+
+    if (duration === '1month') {
+        durationName = 'ONE MONTH';
+    } else if (duration === '6month') {
+        durationName = 'SIX MONTHS';
+    } else if (duration === '1year') {
+        durationName = 'ONE YEAR';
+    } else if (duration === 'lifetime') {
+        durationName = 'LIFETIME';
+    }
+
+    document.getElementById('selectedDuration-' + product).innerText = durationName;
+    document.getElementById('selectedPrice-' + product).innerText = '₹' + price.toLocaleString('en-IN');
+
+    document.getElementById('buyDurationButton-' + product).href =
+        'checkout.html?product=' + product +
+        '&duration=' + duration +
+        '&price=' + price;
+}
+
+</script>
+
+</body>
+
+</html>

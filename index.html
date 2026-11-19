@@ -1,0 +1,561 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tradexa | Institutional Forex &amp; Gold Trading Academy</title>
+<meta name="description" content="Tradexa is a forex and gold trading institute delivering live XAUUSD market intelligence, institutional-grade signal technology, and structured trading education.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,500;12..96,600;12..96,700;12..96,800&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- ============ NOISE / GLOW BACKDROP ============ -->
+<div class="grain-overlay"></div>
+<div class="cursor-glow" id="cursorGlow"></div>
+
+<!-- ============ TOP TICKER ============ -->
+<div class="ticker-bar">
+  <div class="ticker-track" id="tickerTrack">
+    <!-- duplicated via JS for seamless loop -->
+  </div>
+</div>
+
+<!-- ============ HEADER ============ -->
+<header class="site-header" id="siteHeader">
+  <div class="header-inner">+
+    <a href="#home" class="logo">
+      <span class="logo-mark">
+        <svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M20 2L36 11V29L20 38L4 29V11L20 2Z" stroke="url(#logoGrad)" stroke-width="1.6"/>
+          <path d="M13 24L18 15L23 21L27 13" stroke="url(#logoGrad)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          <defs>
+            <linearGradient id="logoGrad" x1="4" y1="2" x2="36" y2="38" gradientUnits="userSpaceOnUse">
+              <stop stop-color="#F4C430"/>
+              <stop offset="1" stop-color="#B8791F"/>
+            </linearGradient>
+          </defs>
+        </svg>
+      </span>
+      <span class="logo-text">TRADEXA</span>
+    </a>
+
+    <nav class="main-nav" id="mainNav">
+      <a href="#home" class="nav-link active">Home</a>
+      <a href="#chart" class="nav-link">Live Gold</a>
+      <a href="#signals" class="nav-link">Signals</a>
+      <a href="#academy" class="nav-link">Academy</a>
+      <a href="#crypto" class="nav-link">Crypto</a>
+      <a href="#pricing" class="nav-link">Pricing</a>
+      <a href="#faq" class="nav-link">FAQ</a>
+    </nav>
+
+    <div class="header-actions">
+      <a href="#pricing" class="btn btn-ghost">Member Login</a>
+      <a href="#pricing" class="btn btn-primary">
+        <span>Start Trading</span>
+        <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2 7H12M12 7L7.5 2.5M12 7L7.5 11.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </a>
+    </div>
+
+    <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<!-- ============ HERO ============ -->
+<section class="hero" id="home">
+  <canvas class="particle-canvas" id="particleCanvas"></canvas>
+  <div class="hero-glow hero-glow-1"></div>
+  <div class="hero-glow hero-glow-2"></div>
+
+  <div class="hero-inner">
+    <div class="hero-copy" data-reveal>
+      <div class="eyebrow"><span class="eyebrow-dot"></span>Live · 52,000+ traders monitoring XAUUSD right now</div>
+      <h1 class="hero-title">
+        TRADE SMARTER <span class="text-gradient-gold">NOTE HARDER</span><br>
+      
+      </h1>
+      <p class="hero-sub">
+        Tradexa is a forex trading community built around one instrument the market never sleeps on — XAUUSD. Learn the method, watch the live tape, act on institutional-grade buy/sell signals.
+      </p>
+      <div class="hero-cta-row">
+        <a href="#pricing" class="btn btn-primary btn-lg">
+          <span>Join The Institute</span>
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2 7H12M12 7L7.5 2.5M12 7L7.5 11.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+        <a href="ea.html" class="btn btn-outline btn-lg">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M2 13L6 8L9 10.5L14 4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <span>EA (Expert Advisor)</span>
+        </a>
+         <a href="indicator.html" class="btn btn-outline btn-lg">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M2 13L6 8L9 10.5L14 4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <span>Indicator</span>
+        </a>++
+      </div>
+
+      <div class="hero-stats">
+        <div class="hero-stat">
+          <span class="hero-stat-num" data-count="14200">0</span><span class="hero-stat-suffix">+</span>
+          <span class="hero-stat-label">Traders Trained</span>
+        </div>
+        <div class="hero-stat">
+          <span class="hero-stat-num" data-count="97">0</span><span class="hero-stat-suffix">ms</span>
+          <span class="hero-stat-label">Signal Latency</span>
+        </div>
+        <div class="hero-stat">
+          <span class="hero-stat-num" data-count="24">0</span><span class="hero-stat-suffix">/7</span>
+          <span class="hero-stat-label">Market Coverage</span>
+        </div>
+        <div class="hero-stat">
+          <span class="hero-stat-num" data-count="8">0</span><span class="hero-stat-suffix">yrs</span>
+          <span class="hero-stat-label">Institute Legacy</span>
+        </div>+
+      </div>
+    </div>
+
+    <div class="hero-terminal" data-reveal data-reveal-delay="1">
+      <div class="terminal-frame">
+        <div class="terminal-topbar">
+          <div class="terminal-dots"><span></span><span></span><span></span></div>
+          <div class="terminal-pair">
+            <span class="pair-name">XAU/USD</span>
+            <span class="pair-badge live">● LIVE</span>
+          </div>
+        </div>
+
+        <div class="terminal-price-row">
+          <span class="terminal-price" id="terminalPrice">2,412.85</span>
+          <span class="terminal-change up" id="terminalChange">▲ 0.64%</span>
+        </div>
+
+        <div class="terminal-chart-wrap">
+          <svg class="terminal-svg" viewBox="0 0 480 220" preserveAspectRatio="none">
+            <defs>
+              <linearGradient id="areaFill" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0%" stop-color="#F4C430" stop-opacity="0.35"/>
+                <stop offset="100%" stop-color="#F4C430" stop-opacity="0"/>
+              </linearGradient>
+            </defs>
+            <path class="chart-area" d="M0,150 L20,140 L40,155 L60,120 L80,130 L100,95 L120,110 L140,80 L160,90 L180,60 L200,75 L220,50 L240,65 L260,40 L280,55 L300,30 L320,45 L340,20 L360,35 L380,15 L400,28 L420,10 L440,25 L460,8 L480,20 L480,220 L0,220 Z" fill="url(#areaFill)"/>
+            <path class="chart-line" d="M0,150 L20,140 L40,155 L60,120 L80,130 L100,95 L120,110 L140,80 L160,90 L180,60 L200,75 L220,50 L240,65 L260,40 L280,55 L300,30 L320,45 L340,20 L360,35 L380,15 L400,28 L420,10 L440,25 L460,8 L480,20" fill="none" stroke="#F4C430" stroke-width="2"/>
+            <circle class="chart-dot" cx="480" cy="20" r="4" fill="#F4C430"/>
+          </svg>
+          <div class="signal-tag buy-tag" style="top:58%; left:14%;">BUY</div>
+          <div class="signal-tag sell-tag" style="top:18%; left:62%;">SELL</div>
+          <div class="scan-line"></div>
+        </div>
+
+        <div class="terminal-footer">
+          <div class="mini-metric"><span>Spread</span><b>0.2</b></div>
+          <div class="mini-metric"><span>24h High</span><b>2,428.10</b></div>
+          <div class="mini-metric"><span>24h Low</span><b>2,391.40</b></div>
+        </div>
+      </div>
+      <div class="terminal-glow"></div>
+    </div>
+  </div>
+
+  <div class="scroll-cue">
+    <span>Scroll</span>
+    <div class="scroll-cue-line"><i></i></div>
+  </div>
+</section>
+
+
+
+<!-- ============ TRUST STRIP ============ -->
+<section class="trust-strip" data-reveal>
+  <p class="trust-label">Trading concepts trusted alongside</p>
+  <div class="trust-logos">
+    <span>MetaTrader 4</span>
+    <span>MetaTrader 5</span>
+    <span>TradingView</span>
+    <span>cTrader</span>
+    <span>NASDAQ</span>
+    <span>ICE Futures</span>
+    <span>LBMA</span>
+  </div>
+</section>
+
+<!-- ============ COMPARISON ============ -->
+<section class="section comparison-section">
+  <div class="section-inner">
+    <div class="section-head" data-reveal>
+      <span class="section-eyebrow">The Tradexa Edge</span>
+      <h2 class="section-title">Guesswork Trading vs. The <span class="text-gradient-gold">Tradexa Method</span></h2>
+      <p class="section-desc">Most retail traders lose to lag, noise, and emotion. Our method — and our signal engine — is built to remove all three.</p>
+    </div>
+
+    <div class="compare-table" data-reveal>
+      <div class="compare-col compare-old">
+        <h3>Retail Guesswork</h3>
+        <ul>
+          <li>Delayed, repainting signals</li>
+          <li>No structured curriculum</li>
+          <li>Emotional entries &amp; exits</li>
+          <li>Manual TP / SL guesswork</li>
+          <li>Chart clutter, no clarity</li>
+          <li>Trading alone, no floor support</li>
+        </ul>
+      </div>
+      <div class="compare-vs">
+        <span>VS</span>
+      </div>
+      <div class="compare-col compare-new">
+        <h3>The Tradexa Method</h3>
+        <ul>
+          <li><i class="check"></i>Zero-lag, non-repainting signal engine</li>
+          <li><i class="check"></i>4-module structured academy</li>
+          <li><i class="check"></i>Rules-based entries, no emotion</li>
+          <li><i class="check"></i>Built-in TP / SL on every signal</li>
+          <li><i class="check"></i>Clean single-pane live terminal</li>
+          <li><i class="check"></i>Live trading floor &amp; mentors</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ LIVE CHART ============ -->
+<section class="section chart-section" id="chart">
+  <div class="section-inner">
+    <div class="section-head" data-reveal>
+      <span class="section-eyebrow">Real-Time Market</span>
+      <h2 class="section-title">Live <span class="text-gradient-gold">XAUUSD</span> Gold Chart</h2>
+      <p class="section-desc">Institutional-grade live gold pricing streamed directly from the market — the same tape our mentors trade from.</p>
+    </div>
+
+    <div class="chart-frame" data-reveal>
+      <div class="chart-frame-glow"></div>
+      <div class="chart-frame-topbar">
+        <div class="terminal-dots"><span></span><span></span><span></span></div>
+        <span class="chart-frame-label">XAUUSD · Live Feed</span>
+      </div>
+      <!-- TradingView Widget -->
+      <div class="tradingview-widget-container" style="height:560px;width:100%">
+        <div id="tv_gold_chart" style="height:100%;width:100%"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SIGNAL ENGINE ============ 
+<section class="section signals-section" id="signals">
+  <div class="signal-bg-glow"></div>
+  <div class="section-inner">
+    <div class="section-head" data-reveal>
+      <span class="section-eyebrow">Signal Engine</span>
+      <h2 class="section-title">Every Move, <span class="text-gradient-gold">Flagged in Real Time</span></h2>
+      <p class="section-desc">The Tradexa Signal Engine reads price action across timeframes and prints a clear directional call the moment probability shifts.</p>
+    </div>
+
+    <div class="signal-cards" data-reveal>
+      <div class="signal-card buy-card">
+        <div class="signal-card-top">
+          <span class="signal-pulse buy-pulse"></span>
+          <span class="signal-label">BUY SIGNAL</span>
+        </div>
+        <p class="signal-desc">Printed when the engine detects a probable market bottom — enter with a pre-mapped take-profit and stop-loss.</p>
+        <div class="signal-meta">
+          <div><span>Entry</span><b>2,398.20</b></div>
+          <div><span>Target</span><b>2,431.00</b></div>
+          <div><span>Stop</span><b>2,384.50</b></div>
+        </div>
+      </div>
+
+      <div class="signal-card option-card">
+        <div class="signal-card-top">
+          <span class="signal-pulse gold-pulse"></span>
+          <span class="signal-label">REVERSAL OPTION</span>
+        </div>
+        <p class="signal-desc">When the indicator flips to <b>SELL</b>, the terminal automatically surfaces a counter-entry option — so you can choose to buy the retracement instead of chasing the drop.</p>
+        <div class="reversal-toggle">
+          <button class="toggle-btn active" data-state="follow">Follow Sell Signal</button>
+          <button class="toggle-btn" data-state="buy">Buy The Dip Instead</button>
+        </div>
+      </div>
+
+      <div class="signal-card sell-card">
+        <div class="signal-card-top">
+          <span class="signal-pulse sell-pulse"></span>
+          <span class="signal-label">SELL SIGNAL</span>
+        </div>
+        <p class="signal-desc">Printed when the engine detects a probable market top — every sell call ships with an optional buy-the-dip counter trade.</p>
+        <div class="signal-meta">
+          <div><span>Entry</span><b>2,429.60</b></div>
+          <div><span>Target</span><b>2,402.10</b></div>
+          <div><span>Stop</span><b>2,441.00</b></div>
+        </div>
+      </div>
+    </div>
+
+    <p class="risk-note" data-reveal>Signals are educational market analysis, not financial advice. Trading gold, forex and crypto carries substantial risk — never risk more than you can afford to lose.</p>
+  </div>
+</section> -->
+
+<!-- ============ ACADEMY / CURRICULUM ============ -->
+<section class="section academy-section" id="academy">
+  <div class="section-inner">
+    <div class="section-head" data-reveal>
+      <span class="section-eyebrow">The Curriculum</span>
+      <h2 class="section-title">Trader <span class="text-gradient-gold">Benefits</span></h2>
+     <!-- <p class="section-desc">Every Tradexa member moves through the same sequence — foundations first, live execution last.</p> -->
+    </div>
+
+    <div class="curriculum-list" data-reveal>
+      <div class="curriculum-item">
+        <span class="curriculum-num">01</span>
+        <div class="curriculum-body">
+          <h3> Eliminate Emotional Trading</h3>
+          <p> Trade with clarity and confidence using pure technical analysis.</p>
+        </div>
+      </div>
+      <div class="curriculum-item">
+        <span class="curriculum-num">02</span>
+        <div class="curriculum-body">
+          <h3>Save Time on Analysis</h3>
+          <p> No need to spend hours charting; get clear entries and exits in seconds.</p>
+        </div>
+      </div>
+      <div class="curriculum-item">
+        <span class="curriculum-num">03</span>
+        <div class="curriculum-body">
+          <h3> Risk Management Built-In</h3>
+          <p>Includes smart stop-loss and take-profit target suggestions..</p>
+        </div>
+      </div>
+      <div class="curriculum-item">
+        <span class="curriculum-num">04</span>
+        <div class="curriculum-body">
+          <h3> Proven Backtested Strategy</h3>
+          <p> Tested across multiple market conditions for consistent reliability.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CRYPTO DETAILS ============ -->
+<section class="section crypto-section" id="crypto">
+  <div class="section-inner">
+    <div class="section-head" data-reveal>
+      <span class="section-eyebrow">Beyond Gold</span>
+      <h2 class="section-title">Crypto <span class="text-gradient-gold">Market Details</span></h2>
+      <p class="section-desc">The same signal methodology, applied across the major digital asset pairs our traders track daily.</p>
+    </div>
+
+    <div class="crypto-grid" data-reveal id="cryptoGrid">
+      <!-- populated by JS -->
+    </div>
+  </div>
+</section>
+
+<!-- ============ TESTIMONIALS ============ -->
+<section class="section testimonial-section">
+  <div class="section-inner">
+    <div class="section-head" data-reveal>
+      <span class="section-eyebrow">Trader Results</span>
+      <h2 class="section-title">Trusted by a Growing <span class="text-gradient-gold">Trading Floor</span></h2>
+    </div>
+
+    <div class="testimonial-grid" data-reveal>
+      <div class="testimonial-card">
+        <p>"The reversal option on the sell signal changed how I trade gold entirely — I stopped chasing tops and started buying the retrace."</p>
+        <div class="testimonial-person"><span class="avatar">A</span><div><b>Aarav M.</b><small>Member since 2024</small></div></div>
+      </div>
+      <div class="testimonial-card">
+        <p>"Structured, sequential, no fluff. The curriculum took me from confused to confident on XAUUSD in eight weeks."</p>
+        <div class="testimonial-person"><span class="avatar">S</span><div><b>Sofia R.</b><small>Member since 2025</small></div></div>
+      </div>
+      <div class="testimonial-card">
+        <p>"Live floor sessions are the difference. Watching mentors react to the same signal I got, in real time, is worth the membership alone."</p>
+        <div class="testimonial-person"><span class="avatar">D</span><div><b>Daniel K.</b><small>Member since 2023</small></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PRICING ============ -->
+<section class="section pricing-section" id="pricing">
+  <div class="section-inner">
+    <div class="section-head" data-reveal>
+      <span class="section-eyebrow">Membership</span>
+      <h2 class="section-title">Choose Your <span class="text-gradient-gold">Trading Edge</span></h2>
+      <p class="section-desc">One membership, full access — academy, live terminal, and signal engine included.</p>
+    </div>
+
+    <div class="pricing-grid" data-reveal>
+      <div class="pricing-card">
+        <h3>Beginner</h3>
+        <p class="pricing-tagline">For traders beginning the curriculum</p>
+        <div class="price"><span class="price-currency">₹</span>15,000<span class="price-period"></span></div>
+        <ul>
+          <li><i class="check"></i>Full 4-module academy</li>
+          <li><i class="check"></i>Delayed signal feed</li>
+          <li><i class="check"></i>Community Discord access</li>
+          <li><i class="check"></i>Live XAUUSD chart access</li>
+        </ul>
+        <a href="#" class="btn btn-outline btn-block">Get Started</a>
+      </div>
+
+      <div class="pricing-card featured">
+        <div class="featured-tag">Most Popular</div>
+        <h3>Advanced</h3>
+        <p class="pricing-tagline">For traders ready to go live</p>
+        <div class="price"><span class="price-currency">₹</span>25,000<span class="price-period"></span></div>
+        <ul>
+          <li><i class="check"></i>Everything in Starter</li>
+          <li><i class="check"></i>Real-time Signal Engine access</li>
+          <li><i class="check"></i>Buy / Sell reversal options</li>
+          <li><i class="check"></i>Crypto signal coverage</li>
+          <li><i class="check"></i>Weekly live floor sessions</li>
+        </ul>
+        <a href="#" class="btn btn-primary btn-block">Join Pro Trader</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FAQ ============ -->
+<section class="section faq-section" id="faq">
+  <div class="section-inner narrow">
+    <div class="section-head" data-reveal>
+      <span class="section-eyebrow">Questions</span>
+      <h2 class="section-title">Frequently Asked <span class="text-gradient-gold">Questions</span></h2>
+    </div>
+
+    <div class="faq-list" data-reveal id="faqList">
+      <div class="faq-item">
+        <button class="faq-question">
+          <span>How fast do I get access after joining?</span>
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-answer"><p>Instantly. Your academy modules, live terminal, and signal feed unlock the moment your membership is confirmed.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question">
+          <span>Do I need special software to use the signal engine?</span>
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-answer"><p>No. Everything runs from your Tradexa dashboard and syncs with TradingView, MT4 and MT5 if you prefer trading from your own platform.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question">
+          <span>What is the "buy the dip" reversal option?</span>
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-answer"><p>Whenever the engine prints a SELL signal, the terminal also shows an optional counter-entry, so you can choose to buy the expected retracement instead of following the sell.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question">
+          <span>Which markets does Tradexa cover?</span>
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-answer"><p>Gold (XAUUSD) is our core focus, alongside major forex pairs and leading crypto assets like BTC, ETH, SOL and BNB.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question">
+          <span>Is trading with Tradexa guaranteed to be profitable?</span>
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-answer"><p>No. Trading carries real risk and no signal or course can guarantee profit. Tradexa provides education and market analysis tools, not financial advice.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FINAL CTA ============ -->
+<section class="final-cta">
+  <div class="final-cta-glow"></div>
+  <div class="section-inner" data-reveal>
+    <h2>Ready to Trade With an Edge?</h2>
+    <p>Join the traders already using the Tradexa terminal to read gold, forex and crypto in real time.</p>
+    <a href="#pricing" class="btn btn-primary btn-lg">
+      <span>Start Trading Today</span>
+      <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2 7H12M12 7L7.5 2.5M12 7L7.5 11.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </a>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer class="site-footer">
+  <div class="section-inner">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <a href="#home" class="logo">
+          <span class="logo-mark">
+            <svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M20 2L36 11V29L20 38L4 29V11L20 2Z" stroke="url(#logoGrad2)" stroke-width="1.6"/>
+              <path d="M13 24L18 15L23 21L27 13" stroke="url(#logoGrad2)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              <defs>
+                <linearGradient id="logoGrad2" x1="4" y1="2" x2="36" y2="38" gradientUnits="userSpaceOnUse">
+                  <stop stop-color="#F4C430"/><stop offset="1" stop-color="#B8791F"/>
+                </linearGradient>
+              </defs>
+            </svg>
+          </span>
+          <span class="logo-text">TRADEXA</span>
+        </a>
+        <p>An institutional-grade forex &amp; gold trading academy — live terminal, signal engine, structured curriculum.</p>
+      </div>
+
+      <div class="footer-col">
+        <h4>Explore</h4>
+        <a href="#chart">Live Gold Chart</a>
+        <a href="#signals">Signal Engine</a>
+        <a href="#academy">Academy</a>
+        <a href="#crypto">Crypto Coverage</a>
+      </div>
+      <div class="footer-col">
+        <h4>Company</h4>
+        <a href="#">About Us</a>
+        <a href="#">Mentors</a>
+        <a href="#">Careers</a>
+        <a href="#">Contact</a>
+      </div>
+      <div class="footer-col">
+        <h4>Legal</h4>
+        <a href="#">Privacy Policy</a>
+        <a href="#">Terms of Service</a>
+        <a href="#">Refund Policy</a>
+        <a href="#">Risk Disclosure</a>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p>© 2026 Tradexa Trading Institute. All rights reserved.</p>
+      <p class="footer-risk">Trading forex, gold and crypto involves substantial risk of loss and is not suitable for all investors. Past performance is not indicative of future results.</p>
+    </div>
+  </div>
+</footer>
+
+<!-- ============ FLOATING CHAT BUTTON ============ -->
+<button
+    class="chat-fab"
+    id="chatFab"
+    aria-label="Open WhatsApp"
+    onclick="window.open('https://wa.me/918943623260', '_blank')">
+
+    <svg
+        width="22"
+        height="22"
+        viewBox="0 0 24 24"
+        fill="currentColor"
+        aria-hidden="true">
+
+        <path d="M12 2.5a9.5 9.5 0 0 0-8.25 14.25L2.5 21.5l4.9-1.22A9.5 9.5 0 1 0 12 2.5Zm0 17.1a7.6 7.6 0 0 1-3.87-1.06l-.28-.17-2.91.72.78-2.83-.18-.29A7.6 7.6 0 1 1 12 19.6Zm4.18-5.7c-.23-.12-1.37-.68-1.58-.76-.21-.08-.36-.12-.51.12-.15.23-.59.76-.72.92-.13.16-.27.18-.5.06-.23-.12-.98-.36-1.87-1.15-.69-.61-1.15-1.37-1.29-1.6-.14-.23-.01-.35.11-.47.11-.11.23-.27.35-.4.12-.14.15-.23.23-.39.08-.16.04-.29-.02-.41-.06-.12-.51-1.24-.7-1.7-.18-.44-.36-.38-.51-.39h-.43c-.15 0-.39.06-.59.29-.2.23-.77.75-.77 1.83s.79 2.12.9 2.27c.11.15 1.55 2.37 3.75 3.32.52.22.93.35 1.25.45.53.17 1.01.15 1.39.09.42-.06 1.37-.56 1.56-1.1.19-.54.19-1 .13-1.1-.05-.1-.2-.16-.43-.28Z"/>
+
+    </svg>
+
+    <span class="chat-fab-pulse"></span>
+
+</button>
+
+<script src="https://s3.tradingview.com/tv.js"></script>
+<script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,1145 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Forex Expert Advisor | Tradexa</title>
+
+    <meta name="description"
+          content="Professional Forex Expert Advisor with automated trading features, risk management and customizable settings.">
+
+    <!-- Bootstrap -->
+    <link
+        href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+        rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            background: #06101d;
+            color: #ffffff;
+            font-family: Arial, sans-serif;
+        }
+
+        /* NAVBAR */
+
+        .navbar {
+            background: rgba(4, 12, 24, 0.95);
+            border-bottom: 1px solid rgba(255,255,255,0.08);
+            backdrop-filter: blur(15px);
+        }
+
+        .navbar-brand {
+            color: #d4af37 !important;
+            font-weight: 800;
+            letter-spacing: 2px;
+        }
+
+        .nav-link {
+            color: #cbd5e1 !important;
+            margin-left: 15px;
+        }
+
+        .nav-link:hover {
+            color: #d4af37 !important;
+        }
+
+        /* HERO */
+
+        .hero {
+            min-height: 650px;
+            display: flex;
+            align-items: center;
+
+            background:
+                linear-gradient(
+                    rgba(3,10,20,0.75),
+                    rgba(3,10,20,0.95)
+                ),
+                url("https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?auto=format&fit=crop&w=1800&q=80");
+
+            background-size: cover;
+            background-position: center;
+        }
+
+        .hero-content {
+            max-width: 800px;
+        }
+
+        .hero-label {
+            color: #d4af37;
+            letter-spacing: 5px;
+            font-size: 13px;
+            text-transform: uppercase;
+            font-weight: 700;
+        }
+
+        .hero h1 {
+            font-size: 65px;
+            font-weight: 900;
+            line-height: 1.05;
+            margin: 20px 0;
+        }
+
+        .hero h1 span {
+            color: #d4af37;
+        }
+
+        .hero p {
+            color: #a8b4c5;
+            font-size: 18px;
+            line-height: 1.8;
+            max-width: 700px;
+        }
+
+        .hero-buttons {
+            margin-top: 35px;
+        }
+
+        .btn-gold {
+            background: #d4af37;
+            color: #07111f;
+            border: none;
+            padding: 14px 28px;
+            border-radius: 10px;
+            font-weight: 800;
+            text-decoration: none;
+            display: inline-block;
+            transition: 0.3s;
+        }
+
+        .btn-gold:hover {
+            background: #f0d36a;
+            color: #07111f;
+            transform: translateY(-2px);
+        }
+
+        .btn-outline {
+            border: 1px solid #d4af37;
+            color: #d4af37;
+            padding: 13px 28px;
+            border-radius: 10px;
+            font-weight: 700;
+            text-decoration: none;
+            display: inline-block;
+            margin-left: 10px;
+        }
+
+        .btn-outline:hover {
+            background: #d4af37;
+            color: #07111f;
+        }
+
+        /* GENERAL */
+
+        .section {
+            padding: 90px 0;
+        }
+
+        .section-label {
+            color: #d4af37;
+            font-size: 13px;
+            letter-spacing: 4px;
+            font-weight: 700;
+        }
+
+        .section-title {
+            font-size: 42px;
+            font-weight: 800;
+            margin-top: 10px;
+        }
+
+        .section-description {
+            color: #94a3b8;
+            max-width: 700px;
+            line-height: 1.8;
+        }
+
+        /* PRODUCT */
+
+        .product-card {
+            background: linear-gradient(
+                145deg,
+                #101d30,
+                #081321
+            );
+
+            border: 1px solid rgba(255,255,255,0.08);
+
+            border-radius: 22px;
+
+            padding: 35px;
+
+            height: 100%;
+
+            transition: 0.3s;
+        }
+
+        .product-card:hover {
+            border-color: rgba(212,175,55,0.6);
+            transform: translateY(-5px);
+        }
+
+        .ea-image {
+            height: 380px;
+            border-radius: 18px;
+
+            background:
+                linear-gradient(
+                    rgba(0,0,0,0.1),
+                    rgba(0,0,0,0.7)
+                ),
+                url("https://images.unsplash.com/photo-1642790551116-18e150f248e7?auto=format&fit=crop&w=1200&q=80");
+
+            background-size: cover;
+            background-position: center;
+        }
+
+        .badge-gold {
+            display: inline-block;
+            background: rgba(212,175,55,0.15);
+            border: 1px solid rgba(212,175,55,0.4);
+            color: #d4af37;
+            padding: 7px 13px;
+            border-radius: 30px;
+            font-size: 12px;
+            font-weight: 700;
+        }
+
+        .ea-title {
+            font-size: 32px;
+            font-weight: 800;
+            margin-top: 20px;
+        }
+
+        .ea-description {
+            color: #94a3b8;
+            line-height: 1.8;
+        }
+
+        /* FEATURES */
+
+        .feature {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .feature-icon {
+            min-width: 45px;
+            height: 45px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            border-radius: 12px;
+
+            background: rgba(212,175,55,0.12);
+            color: #d4af37;
+        }
+
+        .feature h5 {
+            margin-bottom: 5px;
+        }
+
+        .feature p {
+            color: #94a3b8;
+            margin: 0;
+        }
+
+        /* STATS */
+
+        .stats {
+            margin-top: 30px;
+        }
+
+        .stat-box {
+            text-align: center;
+            padding: 25px;
+            background: #0c192a;
+            border: 1px solid #1d2b3d;
+            border-radius: 15px;
+        }
+
+        .stat-box h3 {
+            color: #d4af37;
+            font-weight: 800;
+        }
+
+        .stat-box p {
+            color: #94a3b8;
+            margin: 0;
+            font-size: 13px;
+        }
+
+        /* PRICING */
+
+        .pricing-card {
+            max-width: 550px;
+            margin: auto;
+
+            background:
+                linear-gradient(
+                    145deg,
+                    #121f32,
+                    #07111f
+                );
+
+            border: 1px solid #d4af37;
+            border-radius: 25px;
+            padding: 40px;
+
+            box-shadow:
+                0 25px 80px rgba(0,0,0,0.35);
+        }
+
+        .price {
+            font-size: 50px;
+            font-weight: 900;
+            color: #d4af37;
+        }
+
+        .old-price {
+            color: #64748b;
+            text-decoration: line-through;
+            margin-left: 10px;
+        }
+
+        .pricing-list {
+            list-style: none;
+            padding: 0;
+            margin: 30px 0;
+        }
+
+        .pricing-list li {
+            padding: 12px 0;
+            border-bottom: 1px solid rgba(255,255,255,0.06);
+            color: #cbd5e1;
+        }
+
+        .pricing-list i {
+            color: #22c55e;
+            margin-right: 10px;
+        }
+
+        /* DISCLAIMER */
+
+        .disclaimer {
+            background: rgba(220,38,38,0.08);
+            border: 1px solid rgba(220,38,38,0.3);
+            padding: 25px;
+            border-radius: 15px;
+            color: #cbd5e1;
+            line-height: 1.7;
+        }
+
+        .disclaimer strong {
+            color: #ef4444;
+        }
+
+        /* FOOTER */
+
+        footer {
+            background: #030b15;
+            padding: 40px 0;
+            border-top: 1px solid rgba(255,255,255,0.08);
+        }
+
+        footer p {
+            color: #64748b;
+            margin: 0;
+        }
+
+        /* RESPONSIVE */
+
+        @media(max-width: 768px) {
+
+            .hero {
+                min-height: 600px;
+            }
+
+            .hero h1 {
+                font-size: 42px;
+            }
+
+            .section-title {
+                font-size: 32px;
+            }
+
+            .btn-outline {
+                margin-left: 0;
+                margin-top: 12px;
+            }
+
+            .ea-image {
+                height: 250px;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<!-- NAVBAR -->
+
+<nav class="navbar navbar-expand-lg navbar-dark sticky-top">
+
+    <div class="container">
+
+        <a class="navbar-brand" href="index.html">
+            <span style="color:white;">TRADE</span>XA
+        </a>
+
+        <button
+            class="navbar-toggler"
+            data-bs-toggle="collapse"
+            data-bs-target="#mainNav">
+
+            <span class="navbar-toggler-icon"></span>
+
+        </button>
+
+     <!--   <div
+            class="collapse navbar-collapse"
+            id="mainNav">
+
+            <ul class="navbar-nav ms-auto">
+
+                <li class="nav-item">
+                    <a class="nav-link" href="#">
+                        Home
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="#">
+                        Courses
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="#">
+                        Expert Advisors
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="#">
+                        Mentors
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="#">
+                        Contact
+                    </a>
+                </li>
+
+            </ul>
+
+        </div> -->
+
+    </div>
+
+</nav>
+
+
+
+<!-- HERO -->
+
+<section class="hero">
+
+    <div class="container">
+
+        <div class="hero-content">
+
+            <div class="hero-label">
+               100% Automated Trading EA
+            </div>
+
+            <h1>
+                Trade Smarter With
+                <span>Expert Advisor</span>
+            </h1>
+            
+
+            <p>
+                Pure ICT Fair Value Gap (FVG) Strategy Automated with 1:3 Risk-Reward Ratio!
+                <br> professionally developed MetaTrader Expert Advisor
+                designed to automate a defined trading strategy while
+                providing configurable risk-management controls.
+
+            </p>
+
+            <div class="hero-buttons">
+
+                <a
+                    href="#buy"
+                    class="btn-gold">
+
+                    <i class="fa-solid fa-cart-shopping"></i>
+
+                    Buy EA
+
+                </a>
+
+                <a
+                    href="#features"
+                    class="btn-outline">
+
+                    Explore Features
+
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- PRODUCT DETAILS -->
+
+<section class="section">
+
+    <div class="container">
+
+        <div class="row g-5 align-items-center">
+
+            <!-- IMAGE -->
+
+            <div class="col-lg-6">
+
+                <div class="ea-image"></div>
+
+            </div>
+
+
+            <!-- DETAILS -->
+
+            <div class="col-lg-6">
+
+                <span class="badge-gold">
+                    MT5 EXPERT ADVISOR
+                </span>
+
+                <h2 class="ea-title">
+                    FX FVG EA
+                </h2>
+
+                <p class="ea-description">
+
+                    FX FVG EA is an automated trading software
+                    designed for MetaTrader 5. It executes the
+                    programmed strategy according to user-defined
+                    trading and risk parameters.
+
+                </p>
+
+
+                <div class="feature">
+
+                    <div class="feature-icon">
+                        <i class="fa-solid fa-robot"></i>
+                    </div>
+
+                    <div>
+
+                        <h5>
+                            Automated Execution
+                        </h5>
+
+                        <p>
+                            Executes programmed trading rules automatically.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="feature">
+
+                    <div class="feature-icon">
+                        <i class="fa-solid fa-shield-halved"></i>
+                    </div>
+
+                    <div>
+
+                        <h5>
+                            Risk Management
+                        </h5>
+
+                        <p>
+                            Configurable lot size, stop loss and
+                            risk controls.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="feature">
+
+                    <div class="feature-icon">
+                        <i class="fa-solid fa-chart-line"></i>
+                    </div>
+
+                    <div>
+
+                        <h5>
+                            Strategy Based
+                        </h5>
+
+                        <p>
+                            Built around predefined technical
+                            trading rules.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="feature">
+
+                    <div class="feature-icon">
+                        <i class="fa-solid fa-gear"></i>
+                    </div>
+
+                    <div>
+
+                        <h5>
+                            Custom Settings
+                        </h5>
+
+                        <p>
+                            Adjust trading parameters according
+                            to your preferences.
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- FEATURES -->
+
+<section
+    class="section"
+    id="features">
+
+    <div class="container">
+
+        <div class="text-center mb-5">
+
+            <span class="section-label">
+                EA FEATURES
+            </span>
+
+            <h2 class="section-title">
+                Built For Flexible Trading
+            </h2>
+
+            <p class="section-description mx-auto">
+
+                Explore the main capabilities of the Expert Advisor
+                before purchasing.
+
+            </p>
+
+        </div>
+
+
+        <div class="row g-4">
+
+            <div class="col-md-4">
+
+                <div class="product-card">
+
+                    <div class="feature-icon mb-4">
+
+                        <i class="fa-solid fa-bolt"></i>
+
+                    </div>
+
+                    <h4>
+                       Fully Automated 
+                    </h4>
+
+                    <p class="ea-description">
+
+                        24/7 HANDS-FREE TRADING (NO MANUAL EFFORT REQUIRED) 
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="col-md-4">
+
+                <div class="product-card">
+
+                    <div class="feature-icon mb-4">
+
+                        <i class="fa-solid fa-sliders"></i>
+
+                    </div>
+
+                    <h4>
+                        Adjustable Parameters
+                    </h4>
+
+                    <p class="ea-description">
+
+                       CONFIGURE RISK PERCENTAGE, LOT SIZE,
+                       STOP LOSS, TAKE PROFIT AND OTHER SUPPORTED
+                       PARAMETERS.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="col-md-4">
+
+                <div class="product-card">
+
+                    <div class="feature-icon mb-4">
+
+                        <i class="fa-solid fa-chart-simple"></i>
+
+                    </div>
+
+                    <h4>
+                        Strategy Testing
+                    </h4>
+
+                    <p class="ea-description">
+
+                       TEST THE EA WITH HISTORICAL DATA BEFORE
+                       DEPLOYING IT ON A LIVE ACCOUNT.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="col-md-4">
+
+                <div class="product-card">
+
+                    <div class="feature-icon mb-4">
+
+                        <i class="fa-solid fa-chart-simple"></i>
+
+                    </div>
+
+                    <h4>
+                        Built In Risk Management
+                    </h4>
+
+                    <p class="ea-description">
+
+                        STRICT STOP-LOSS (SL) & TAKE-PROFIT (TP) SETTINGS 
+                        SAFEST SERVINGS OPTIMIZO FOR CAPOTAL PROTECTION
+
+                    </p>
+
+                </div>
+
+            </div>
+
+              <div class="col-md-4">
+
+                <div class="product-card">
+
+                    <div class="feature-icon mb-4">
+
+                        <i class="fa-solid fa-dollar-sign"></i>
+
+                    </div>
+
+                    <h4>
+                        Consistent Monthly Returns
+                    </h4>
+
+                    <p class="ea-description">
+
+                        [10% - 20%] Expect ROI
+
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="col-md-4">
+
+                <div class="product-card">
+
+                    <div class="feature-icon mb-4">
+
+                        <i class="fa-solid fa-lock"></i>
+
+                    </div>
+
+                    <h4>
+                        License Protection
+                    </h4>
+
+                    <p class="ea-description">
+
+                        LICENSE-BASED ACCESS CAN BE USED TO
+                        MANAGE AUTHORIZED EA INSTALLATIONS.
+
+                    </p>
+
+                </div>
+
+            </div>
+
+
+         <!--   <div class="col-md-4">
+
+                <div class="product-card">
+
+                    <div class="feature-icon mb-4">
+
+                        <i class="fa-solid fa-headset"></i>
+
+                    </div>
+
+                    <h4>
+                        Customer Support
+                    </h4>
+
+                    <p class="ea-description">
+
+                       GET INSTALLATION GUIDANCE AND TECHNICAL
+                       SUPPORT FOR THE SOFTWARE.
+
+                    </p>
+
+                </div>
+
+            </div> -->
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- STATS -->
+
+<section class="section">
+
+    <div class="container">
+
+        <div class="text-center mb-5">
+
+            <span class="section-label">
+                TESTING INFORMATION
+            </span>
+
+            <h2 class="section-title">
+                Performance Data
+            </h2>
+
+            <p class="section-description mx-auto">
+
+                Replace the example values below with your
+                verified backtest or independently verified
+                live-test results.
+
+            </p>
+
+        </div>
+
+
+        <div class="row g-4 justify-content-center">
+
+            <div class="col-md-3">
+
+                <div class="stat-box">
+
+                    <h3>
+                        68%
+                    </h3>
+
+                    <p>
+                     Win Rate
+                    </p>
+
+                </div>
+
+            </div>
+
+
+        <!-- <div class="col-md-3">
+
+                <div class="stat-box">
+
+                    <h3>
+                        1.8
+                    </h3>
+
+                    <p>
+                         Profit Factor
+                    </p>
+
+                </div>
+
+            </div> -->
+
+
+            <div class="col-md-3">
+
+                <div class="stat-box">
+
+                    <h3>
+                        12%
+                    </h3>
+
+                    <p>
+                        Max Drawdown
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="col-md-3">
+
+                <div class="stat-box">
+
+                    <h3>
+                        5Y
+                    </h3>
+
+                    <p>
+                         Test Period
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- PRICING -->
+
+<section
+    class="section"
+    id="buy">
+
+    <div class="container">
+
+        <div class="text-center mb-5">
+
+            <span class="section-label">
+                LICENSE
+            </span>
+
+            <h2 class="section-title">
+                Choose Your EA License
+            </h2>
+
+        </div>
+
+
+        <div class="pricing-card">
+
+            <span class="badge-gold">
+                MOST POPULAR
+            </span>
+
+            <h2 class="mt-4">
+                FX FVG EA
+            </h2>
+
+            <p class="ea-description">
+
+                Professional Expert Advisor license.
+
+            </p>
+
+
+            <div>
+
+                <span class="price">
+                    ₹14,999
+                </span>
+
+                <span class="old-price">
+                    ₹24,999
+                </span>
+
+            </div>
+
+
+            <ul class="pricing-list">
+
+                <li>
+                    <i class="fa-solid fa-check"></i>
+                    MT5 Expert Advisor
+                </li>
+
+                <li>
+                    <i class="fa-solid fa-check"></i>
+                    Lifetime software license
+                </li>
+
+                <li>
+                    <i class="fa-solid fa-check"></i>
+                    Installation assistance
+                </li>
+
+                <li>
+                    <i class="fa-solid fa-check"></i>
+                    Risk management settings
+                </li>
+
+                <li>
+                    <i class="fa-solid fa-check"></i>
+                    Strategy documentation
+                </li>
+
+                <li>
+                    <i class="fa-solid fa-check"></i>
+                    Technical support
+                </li>
+
+            </ul>
+
+
+            <a
+                href="https://wa.me/918943623260"
+                class="btn-gold w-100 text-center">
+
+                <i class="fa-solid fa-cart-shopping"></i>
+
+                Buy Now — ₹14,999
+
+            </a>
+
+
+            <p class="text-center mt-3"
+               style="color:#64748b;font-size:12px;">
+
+                Secure checkout • Digital product
+
+            </p>
+
+        </div>
+
+    </div>
+
+    
+
+</section>
+
+
+
+<!-- DISCLAIMER -->
+
+<section class="section pt-0">
+
+    <div class="container">
+
+        <div class="disclaimer">
+
+            <strong>
+                ⚠ Risk Disclosure
+            </strong>
+
+            <br><br>
+
+            Forex and CFD trading involves substantial risk of loss
+            and may not be suitable for all investors. An Expert
+            Advisor is software and does not guarantee profits or
+            prevent losses. Past performance, backtests and
+            hypothetical results are not guarantees of future
+            performance. Only trade with funds you can afford to
+            lose and independently evaluate whether the product
+            is suitable for you.
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- FOOTER -->
+
+<footer>
+
+    <div class="container text-center">
+
+        <p>
+            © 2026 FX Academy. All Rights Reserved.
+        </p>
+
+    </div>
+
+</footer>
+
+
+
+<script
+    src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js">
+</script>
+
+</body>
+
+</html>
