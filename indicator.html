@@ -993,12 +993,15 @@
                                 </div>
                             </div>
 
-                            <a href="checkout.html?product=hunter-v1&duration=1month&price=2999"
-                               id="buyDurationButton-hunter-v1"
-                               class="btn-gold w-100 text-center mt-3">
-                                <i class="fa-solid fa-cart-shopping"></i>
-                                BUY NOW
-                            </a>
+                            <button id="buyDurationButton-hunter-v1"
+                                    class="btn btn-warning fw-bold px-4 py-2 w-100"
+                                    data-product="Tradexa Hunter V1"
+                                    data-plan="ONE MONTH"
+                                    data-inr="2999"
+                                    data-usdt="30"
+                                    onclick="openCheckoutModal(this)">
+                              Buy Now
+                            </button>
 
                         </div>
 
@@ -1145,12 +1148,15 @@
                                 </div>
                             </div>
 
-                            <a href="checkout.html?product=hunter-v2&duration=1month&price=2999"
-                               id="buyDurationButton-hunter-v2"
-                               class="btn-gold w-100 text-center mt-3">
-                                <i class="fa-solid fa-cart-shopping"></i>
-                                BUY NOW
-                            </a>
+                            <button id="buyDurationButton-hunter-v2"
+                                    class="btn btn-warning fw-bold px-4 py-2 w-100"
+                                    data-product="Tradexa Hunter V2"
+                                    data-plan="ONE MONTH"
+                                    data-inr="2999"
+                                    data-usdt="30"
+                                    onclick="openCheckoutModal(this)">
+                              Buy Now
+                            </button>
 
                         </div>
 
@@ -1242,12 +1248,15 @@
                                             </div>
                                         </div>
 
-                                        <a href="checkout.html?product=hunter-v3&amp;duration=1month&amp;price=2999"
-                                           id="buyDurationButton-hunter-v3"
-                                           class="btn-gold w-100 text-center mt-3">
-                                            <i class="fa-solid fa-cart-shopping"></i>
-                                            BUY NOW
-                                        </a>
+                                        <button id="buyDurationButton-hunter-v3"
+                                                class="btn btn-warning fw-bold px-4 py-2 w-100"
+                                                data-product="Tradexa Hunter V3"
+                                                data-plan="ONE MONTH"
+                                                data-inr="2999"
+                                                data-usdt="30"
+                                                onclick="openCheckoutModal(this)">
+                                          Buy Now
+                                        </button>
                                     </div>
                                 </div>
                             </div>
@@ -1631,12 +1640,15 @@
                     </div>
                 </div>
 
-                <a href="checkout.html?product=hunter-bundle&duration=1month&price=5999"
-                   id="buyDurationButton-hunter-bundle"
-                   class="btn-gold w-100 text-center mt-3">
-                    <i class="fa-solid fa-cart-shopping"></i>
-                    BUY HUNTER BUNDLE
-                </a>
+                <button id="buyDurationButton-hunter-bundle"
+                        class="btn btn-warning fw-bold px-4 py-2 w-100"
+                        data-product="Tradexa Hunter Bundle"
+                        data-plan="ONE MONTH"
+                        data-inr="5999"
+                        data-usdt="60"
+                        onclick="openCheckoutModal(this)">
+                  Buy Now
+                </button>
 
             </div>
 
@@ -1707,6 +1719,46 @@
 </script>
 
 <script>
+function openCheckoutModal(button) {
+  const accessSection = button.closest('.access-section');
+  const selectedCard = accessSection
+    ? accessSection.querySelector('.duration-card.selected')
+    : null;
+
+  let plan = button.dataset.plan || 'ONE MONTH';
+  let inr = button.dataset.inr || '2999';
+  let usdt = button.dataset.usdt || '30';
+
+  if (selectedCard) {
+    const planTitle = selectedCard.querySelector('h4');
+    const priceText = selectedCard.querySelector('.duration-price');
+    if (planTitle) plan = planTitle.textContent.trim().replace(/\s+/g, ' ');
+
+    if (priceText) {
+      const inrMatch = priceText.textContent.match(/₹([\d,]+)/);
+      const usdtMatch = priceText.textContent.match(/\$\s*([\d,]+)/);
+      if (inrMatch) inr = inrMatch[1].replace(/,/g, '');
+      if (usdtMatch) usdt = usdtMatch[1].replace(/,/g, '');
+    }
+  }
+
+  const params = new URLSearchParams({
+    product: button.dataset.product,
+    plan: plan,
+    inr: inr,
+    usdt: usdt
+  });
+  localStorage.setItem('tradexaCheckout', JSON.stringify({
+    product: button.dataset.product,
+    plan: plan,
+    inr: inr,
+    usdt: usdt
+  }));
+  window.location.href = `payment.html?${params.toString()}`;
+}
+</script>
+
+<script>
 
 function selectDuration(card, product, duration, price) {
 
@@ -1736,7 +1788,7 @@ function selectDuration(card, product, duration, price) {
     if (product === 'hunter-bundle') {
         const bundleDollarPrices = {
             5999: 60,
-            10999: 101,
+            10999: 110,
             19999: 200,
             29999: 300
         };
@@ -1747,7 +1799,7 @@ function selectDuration(card, product, duration, price) {
         const indicatorDollarPrices = {
             2999: 30,
             5999: 60,
-            11999: 101,
+            10999: 110,
             19999: 200,
             12999: 200
         };
@@ -1759,10 +1811,12 @@ function selectDuration(card, product, duration, price) {
             '₹' + price.toLocaleString('en-IN');
     }
 
-    document.getElementById('buyDurationButton-' + product).href =
-        'checkout.html?product=' + product +
-        '&duration=' + duration +
-        '&price=' + price;
+    const usdtMatch = card.querySelector('.duration-price').textContent.match(/\(\$(\d+(?:,\d+)*)\)/);
+    const usdt = usdtMatch ? usdtMatch[1].replace(/,/g, '') : '0';
+    const button = document.getElementById('buyDurationButton-' + product);
+    button.dataset.plan = durationName;
+    button.dataset.inr = String(price);
+    button.dataset.usdt = usdt;
 }
 
 </script>
