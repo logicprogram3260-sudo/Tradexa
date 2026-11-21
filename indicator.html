@@ -245,6 +245,8 @@
 
         .indicator-card {
             height: 100%;
+            display: flex;
+            flex-direction: column;
 
             background:
                 linear-gradient(
@@ -292,12 +294,15 @@
         }
 
         .hunter-v2 {
-            background-image:
-                linear-gradient(
-                    rgba(0,0,0,0.15),
-                    rgba(0,0,0,0.75)
-                ),
-                url("https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?auto=format&fit=crop&w=1200&q=80");
+            background: linear-gradient(145deg, #121f32, #07111f);
+        }
+
+        .hunter-v1 img,
+        .hunter-v2 img {
+            display: block;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
         }
 
 
@@ -323,6 +328,9 @@
 
         .indicator-body {
             padding: 30px;
+            display: flex;
+            flex: 1;
+            flex-direction: column;
         }
 
         .indicator-title {
@@ -422,6 +430,7 @@
         .purchase-box {
             max-width: 600px;
             margin: auto;
+            position: relative;
 
             background:
                 linear-gradient(
@@ -440,6 +449,27 @@
 
             box-shadow:
                 0 25px 80px rgba(0,0,0,0.35);
+        }
+
+        .bundle-offer {
+            position: absolute;
+            top: -14px;
+            right: -14px;
+            z-index: 2;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            padding: 9px 16px;
+            background: linear-gradient(135deg, #d4af37, #f0d36a);
+            color: #07111f;
+            border-radius: 999px;
+            font-size: 12px;
+            font-weight: 900;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            box-shadow: 0 8px 24px rgba(212,175,55,0.22);
+            transform: rotate(-4deg);
         }
 
         .purchase-price {
@@ -525,6 +555,11 @@
             margin-top: 30px;
         }
 
+        .indicator-body .access-section {
+            margin-top: auto;
+            padding-top: 30px;
+        }
+
         .access-title span {
             color: #d4af37;
             font-size: 11px;
@@ -593,6 +628,13 @@
             font-weight: 800;
         }
 
+        .duration-price small,
+        .selected-price small {
+            color: #94a3b8;
+            font-size: 12px;
+            font-weight: 700;
+        }
+
         .popular-badge {
             position: absolute;
             top: -9px;
@@ -636,6 +678,10 @@
         }
 
         @media(max-width: 500px) {
+            .bundle-offer {
+                right: 8px;
+            }
+
             .duration-grid {
                 grid-template-columns: 1fr;
             }
@@ -748,7 +794,7 @@
             </h1>
 
             <p>
-                Discover Hunter V1 and Hunter V2 — two professional
+                Discover Hunter V1, V2, and V3 — professional
                 trading indicators designed to help traders analyze
                 market structure, trends and potential trading setups.
             </p>
@@ -768,7 +814,7 @@
                     href="#compare"
                     class="btn-outline-gold">
 
-                    Compare V1 & V2
+                    Compare V1, V2 & V3
 
                 </a>
 
@@ -818,7 +864,7 @@
                  HUNTER V1
             ====================== -->
 
-            <div class="col-lg-6">
+            <div class="col-lg-4">
 
                 <div class="indicator-card">
 
@@ -896,44 +942,44 @@
                             <div class="duration-grid">
 
                                 <div class="duration-card selected"
-                                     onclick="selectDuration(this, 'hunter-v1', '1month', 1999)">
+                                     onclick="selectDuration(this, 'hunter-v1', '1month', 2999)">
                                     <div class="duration-icon">
                                         <i class="fa-solid fa-calendar"></i>
                                     </div>
                                     <h4>ONE MONTH</h4>
                                     <p>30 Days Access</p>
-                                    <div class="duration-price">₹1,999</div>
+                                    <div class="duration-price">₹2,999 <small>($30)</small></div>
                                 </div>
 
                                 <div class="duration-card"
-                                     onclick="selectDuration(this, 'hunter-v1', '6month', 4999)">
+                                     onclick="selectDuration(this, 'hunter-v1', '3month', 5999)">
                                     <div class="duration-icon">
                                         <i class="fa-solid fa-calendar-days"></i>
                                     </div>
-                                    <h4>SIX MONTHS</h4>
-                                    <p>180 Days Access</p>
-                                    <div class="duration-price">₹4,999</div>
+                                    <h4>THREE MONTHS</h4>
+                                    <p>90 Days Access</p>
+                                    <div class="duration-price">₹5,999 <small>($60)</small></div>
                                 </div>
 
                                 <div class="duration-card popular"
-                                     onclick="selectDuration(this, 'hunter-v1', '1year', 7999)">
-                                    <div class="popular-badge">MOST POPULAR</div>
+                                     onclick="selectDuration(this, 'hunter-v1', '6month', 11999)">
                                     <div class="duration-icon">
                                         <i class="fa-solid fa-star"></i>
                                     </div>
-                                    <h4>ONE YEAR</h4>
-                                    <p>365 Days Access</p>
-                                    <div class="duration-price">₹7,999</div>
+                                    <h4>SIX MONTHS</h4>
+                                    <p>180 Days Access</p>
+                                    <div class="duration-price">₹11,999 <small>($101)</small></div>
                                 </div>
 
                                 <div class="duration-card"
-                                     onclick="selectDuration(this, 'hunter-v1', 'lifetime', 12999)">
+                                     onclick="selectDuration(this, 'hunter-v1', '1year', 19999)">
+                                     <div class="popular-badge">MOST POPULAR</div>
                                     <div class="duration-icon">
                                         <i class="fa-solid fa-infinity"></i>
                                     </div>
-                                    <h4>LIFETIME</h4>
-                                    <p>Unlimited Access</p>
-                                    <div class="duration-price">₹12,999</div>
+                                    <h4>ONE YEAR</h4>
+                                    <p>365 Days Access</p>
+                                    <div class="duration-price">₹19,999 <small>($200)</small></div>
                                 </div>
 
                             </div>
@@ -943,10 +989,12 @@
                                     <small>SELECTED PLAN</small>
                                     <h3 id="selectedDuration-hunter-v1">ONE MONTH</h3>
                                 </div>
-                                <div class="selected-price" id="selectedPrice-hunter-v1">₹1,999</div>
+                                <div class="selected-price" id="selectedPrice-hunter-v1">
+                                    ₹2,999 <small>($30)</small>
+                                </div>
                             </div>
 
-                            <a href="checkout.html?product=hunter-v1&duration=1month&price=1999"
+                            <a href="checkout.html?product=hunter-v1&duration=1month&price=2999"
                                id="buyDurationButton-hunter-v1"
                                class="btn-gold w-100 text-center mt-3">
                                 <i class="fa-solid fa-cart-shopping"></i>
@@ -968,7 +1016,7 @@
                  HUNTER V2
             ====================== -->
 
-            <div class="col-lg-6">
+            <div class="col-lg-4">
 
                 <div class="indicator-card">
 
@@ -1046,44 +1094,44 @@
                             <div class="duration-grid">
 
                                 <div class="duration-card selected"
-                                     onclick="selectDuration(this, 'hunter-v2', '1month', 1999)">
+                                     onclick="selectDuration(this, 'hunter-v2', '1month', 2999)">
                                     <div class="duration-icon">
                                         <i class="fa-solid fa-calendar"></i>
                                     </div>
                                     <h4>ONE MONTH</h4>
                                     <p>30 Days Access</p>
-                                    <div class="duration-price">₹1,999</div>
+                                    <div class="duration-price">₹2,999 <small>($30)</small></div>
                                 </div>
 
                                 <div class="duration-card"
-                                     onclick="selectDuration(this, 'hunter-v2', '6month', 4999)">
+                                     onclick="selectDuration(this, 'hunter-v2', '3month', 5999)">
                                     <div class="duration-icon">
                                         <i class="fa-solid fa-calendar-days"></i>
                                     </div>
-                                    <h4>SIX MONTHS</h4>
-                                    <p>180 Days Access</p>
-                                    <div class="duration-price">₹4,999</div>
+                                    <h4>THREE MONTHS</h4>
+                                    <p>90 Days Access</p>
+                                    <div class="duration-price">₹5,999 <small>($60)</small></div>
                                 </div>
 
                                 <div class="duration-card popular"
-                                     onclick="selectDuration(this, 'hunter-v2', '1year', 7999)">
-                                    <div class="popular-badge">MOST POPULAR</div>
+                                     onclick="selectDuration(this, 'hunter-v2', '6month', 11999)">
                                     <div class="duration-icon">
                                         <i class="fa-solid fa-star"></i>
                                     </div>
-                                    <h4>ONE YEAR</h4>
-                                    <p>365 Days Access</p>
-                                    <div class="duration-price">₹7,999</div>
+                                    <h4> SIX MONTHS</h4>
+                                    <p>180 Days Access</p>
+                                    <div class="duration-price">₹11,999 <small>($101)</small></div>
                                 </div>
 
                                 <div class="duration-card"
-                                     onclick="selectDuration(this, 'hunter-v2', 'lifetime', 12999)">
+                                     onclick="selectDuration(this, 'hunter-v2', '1year', 12999)">
+                                      <div class="popular-badge">MOST POPULAR</div>
                                     <div class="duration-icon">
                                         <i class="fa-solid fa-infinity"></i>
                                     </div>
-                                    <h4>LIFETIME</h4>
-                                    <p>Unlimited Access</p>
-                                    <div class="duration-price">₹12,999</div>
+                                    <h4>ONE YEAR</h4>
+                                    <p>365 Days Access</p>
+                                    <div class="duration-price">₹12,999 <small>($200)</small></div>
                                 </div>
 
                             </div>
@@ -1093,10 +1141,12 @@
                                     <small>SELECTED PLAN</small>
                                     <h3 id="selectedDuration-hunter-v2">ONE MONTH</h3>
                                 </div>
-                                <div class="selected-price" id="selectedPrice-hunter-v2">₹1,999</div>
+                                <div class="selected-price" id="selectedPrice-hunter-v2">
+                                    ₹2,999 <small>($30)</small>
+                                </div>
                             </div>
 
-                            <a href="checkout.html?product=hunter-v2&duration=1month&price=1999"
+                            <a href="checkout.html?product=hunter-v2&duration=1month&price=2999"
                                id="buyDurationButton-hunter-v2"
                                class="btn-gold w-100 text-center mt-3">
                                 <i class="fa-solid fa-cart-shopping"></i>
@@ -1105,17 +1155,108 @@
 
                         </div>
 
+                    </div>
+                </div>
+            </div>
+
+                        <!-- =====================
+                             HUNTER V3
+                        ====================== -->
+
+                        <div class="col-lg-4">
+
+                            <div class="indicator-card">
+
+                                <div class="indicator-image hunter-v1">
+                                    <img src="V1.png"
+                                         alt="Hunter V3 Forex Indicator"
+                                         class="img-fluid">
+                                    <span class="version-badge">HUNTER V3</span>
+                                </div>
+
+                                <div class="indicator-body">
+
+                                    <h2 class="indicator-title">Hunter V3</h2>
+
+                                    <p class="indicator-description">
+                                        The latest Hunter indicator, with trend analysis,
+                                        signal tools, and configurable trading features.
+                                    </p>
+
+                                    <ul class="feature-list">
+                                        <li><i class="fa-solid fa-check"></i>Advanced Trend Analysis</li>
+                                        <li><i class="fa-solid fa-check"></i>Enhanced Buy &amp; Sell Signals</li>
+                                        <li><i class="fa-solid fa-check"></i>Market Structure Detection</li>
+                                        <li><i class="fa-solid fa-check"></i>Custom Signal Filters</li>
+                                        <li><i class="fa-solid fa-check"></i>Multiple Timeframe Analysis</li>
+                                        <li><i class="fa-solid fa-check"></i>Real Time Alerts</li>
+                                    </ul>
+
+                                    <div class="access-section">
+                                        <div class="access-title">
+                                            <span>ACCESS DURATION</span>
+                                            <h3>Choose Your License</h3>
+                                        </div>
+
+                                        <div class="duration-grid">
+                                            <div class="duration-card selected"
+                                                 onclick="selectDuration(this, 'hunter-v3', '1month', 2999)">
+                                                <div class="duration-icon"><i class="fa-solid fa-calendar"></i></div>
+                                                <h4>ONE MONTH</h4>
+                                                <p>30 Days Access</p>
+                                                <div class="duration-price">₹2,999 <small>($30)</small></div>
+                                            </div>
+
+                                            <div class="duration-card"
+                                                 onclick="selectDuration(this, 'hunter-v3', '3month', 5999)">
+                                                <div class="duration-icon"><i class="fa-solid fa-calendar-days"></i></div>
+                                                <h4>THREE MONTHS</h4>
+                                                <p>90 Days Access</p>
+                                                <div class="duration-price">₹5,999 <small>($60)</small></div>
+                                            </div>
+
+                                            <div class="duration-card popular"
+                                                 onclick="selectDuration(this, 'hunter-v3', '6month', 11999)">
+                                                <div class="duration-icon"><i class="fa-solid fa-star"></i></div>
+                                                <h4>SIX MONTHS</h4>
+                                                <p>180 Days Access</p>
+                                                <div class="duration-price">₹11,999 <small>($101)</small></div>
+                                            </div>
+
+                                            <div class="duration-card"
+                                                 onclick="selectDuration(this, 'hunter-v3', '1year', 12999)">
+                                                <div class="popular-badge">MOST POPULAR</div>
+                                                <div class="duration-icon"><i class="fa-solid fa-infinity"></i></div>
+                                                <h4>ONE YEAR</h4>
+                                                <p>365 Days Access</p>
+                                                <div class="duration-price">₹12,999 <small>($200)</small></div>
+                                            </div>
+                                        </div>
+
+                                        <div class="selected-plan">
+                                            <div>
+                                                <small>SELECTED PLAN</small>
+                                                <h3 id="selectedDuration-hunter-v3">ONE MONTH</h3>
+                                            </div>
+                                            <div class="selected-price" id="selectedPrice-hunter-v3">
+                                                ₹2,999 <small>($30)</small>
+                                            </div>
+                                        </div>
+
+                                        <a href="checkout.html?product=hunter-v3&amp;duration=1month&amp;price=2999"
+                                           id="buyDurationButton-hunter-v3"
+                                           class="btn-gold w-100 text-center mt-3">
+                                            <i class="fa-solid fa-cart-shopping"></i>
+                                            BUY NOW
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
 
                     </div>
 
-                </div>
-
-            </div>
-
-
         </div>
-
-    </div>
 
 </section>
 
@@ -1138,7 +1279,7 @@
             </span>
 
             <h2 class="section-title">
-                HUNTER V1 vs HUNTER V2
+                Compare Hunter V1, V2 &amp; V3
             </h2>
 
             <p class="section-description mx-auto">
@@ -1172,6 +1313,9 @@
                             <th>
                                 HUNTER V2
                             </th>
+                            <th>
+                                HUNTER V3
+                            </th>
 
                         </tr>
 
@@ -1184,6 +1328,10 @@
 
                             <td>
                                 Trend Analysis
+                            </td>
+
+                            <td>
+                                <i class="fa-solid fa-check check"></i>
                             </td>
 
                             <td>
@@ -1211,6 +1359,10 @@
                                 <i class="fa-solid fa-check check"></i>
                             </td>
 
+                            <td>
+                                <i class="fa-solid fa-check check"></i>
+                            </td>
+
                         </tr>
 
 
@@ -1218,6 +1370,10 @@
 
                             <td>
                                 Market Structure
+                            </td>
+
+                            <td>
+                                <i class="fa-solid fa-check check"></i>
                             </td>
 
                             <td>
@@ -1245,6 +1401,10 @@
                                 <i class="fa-solid fa-check check"></i>
                             </td>
 
+                            <td>
+                                <i class="fa-solid fa-check check"></i>
+                            </td>
+
                         </tr>
 
 
@@ -1262,6 +1422,10 @@
                                 <i class="fa-solid fa-check check"></i>
                             </td>
 
+                            <td>
+                                <i class="fa-solid fa-check check"></i>
+                            </td>
+
                         </tr>
 
 
@@ -1269,6 +1433,10 @@
 
                             <td>
                                 Multi-Timeframe
+                            </td>
+
+                            <td>
+                                <i class="fa-solid fa-check check"></i>
                             </td>
 
                             <td>
@@ -1296,6 +1464,10 @@
                                 <i class="fa-solid fa-check check"></i>
                             </td>
 
+                            <td>
+                                <i class="fa-solid fa-check check"></i>
+                            </td>
+
                         </tr>
 
 
@@ -1303,6 +1475,10 @@
 
                             <td>
                                 Technical Support
+                            </td>
+
+                            <td>
+                                <i class="fa-solid fa-check check"></i>
                             </td>
 
                             <td>
@@ -1343,33 +1519,21 @@
                 HUNTER BUNDLE
             </span>
 
+            <div class="bundle-offer">
+                <i class="fa-solid fa-gift"></i>
+                Buy 2 Get 1 Free
+            </div>
+
             <h2 class="mt-3">
-                Hunter V1 + Hunter V2
+                Hunter V1 + Hunter V2 + Hunter V3
             </h2>
 
             <p class="section-description mx-auto">
 
-                Get both indicators together and use the tools
+                Get all three indicators together and use the tools
                 according to your preferred market-analysis workflow.
 
             </p>
-
-
-            <div class="purchase-price">
-                ₹10,999
-            </div>
-
-            <div
-                style="
-                color:#64748b;
-                text-decoration:line-through;
-                margin-bottom:25px;
-                ">
-
-                ₹20,998
-
-            </div>
-
 
             <ul
                 class="feature-list text-start">
@@ -1382,6 +1546,11 @@
                 <li>
                     <i class="fa-solid fa-check"></i>
                     Hunter V2
+                </li>
+
+                <li>
+                    <i class="fa-solid fa-check"></i>
+                    Hunter V3
                 </li>
 
                 <li>
@@ -1401,16 +1570,76 @@
 
             </ul>
 
+            <div class="access-section">
 
-            <a
-                href="checkout.html?product=hunter-bundle"
-                class="btn-gold w-100">
+                <div class="access-title">
+                    <span>ACCESS DURATION</span>
+                    <h3>Choose Your Bundle License</h3>
+                </div>
 
-                <i class="fa-solid fa-cart-shopping"></i>
+                <div class="duration-grid">
 
-                BUY HUNTER BUNDLE
+                    <div class="duration-card selected"
+                         onclick="selectDuration(this, 'hunter-bundle', '1month', 5999)">
+                        <div class="duration-icon">
+                            <i class="fa-solid fa-calendar"></i>
+                        </div>
+                        <h4>ONE MONTH</h4>
+                        <p>30 Days Access</p>
+                        <div class="duration-price">₹5,999 <small>($60)</small></div>
+                    </div>
 
-            </a>
+                    <div class="duration-card"
+                         onclick="selectDuration(this, 'hunter-bundle', '3month', 10999)">
+                        <div class="duration-icon">
+                            <i class="fa-solid fa-calendar-days"></i>
+                        </div>
+                        <h4>THREE MONTHS</h4>
+                        <p>90 Days Access</p>
+                        <div class="duration-price">₹10,999 <small>($101)</small></div>
+                    </div>
+
+                    <div class="duration-card popular"
+                         onclick="selectDuration(this, 'hunter-bundle', '6month', 19999)">
+                        <div class="duration-icon">
+                            <i class="fa-solid fa-star"></i>
+                        </div>
+                        <h4>SIX MONTHS</h4>
+                        <p>180 Days Access</p>
+                        <div class="duration-price">₹19,999 <small>($200)</small></div>
+                    </div>
+
+                    <div class="duration-card"
+                         onclick="selectDuration(this, 'hunter-bundle', '1year', 29999)">
+                        <div class="popular-badge">BEST VALUE</div>
+                        <div class="duration-icon">
+                            <i class="fa-solid fa-infinity"></i>
+                        </div>
+                        <h4>ONE YEAR</h4>
+                        <p>365 Days Access</p>
+                        <div class="duration-price">₹29,999 <small>($300)</small></div>
+                    </div>
+
+                </div>
+
+                <div class="selected-plan">
+                    <div>
+                        <small>SELECTED PLAN</small>
+                        <h3 id="selectedDuration-hunter-bundle">ONE MONTH</h3>
+                    </div>
+                    <div class="selected-price" id="selectedPrice-hunter-bundle">
+                        ₹5,999 <small>($60)</small>
+                    </div>
+                </div>
+
+                <a href="checkout.html?product=hunter-bundle&duration=1month&price=5999"
+                   id="buyDurationButton-hunter-bundle"
+                   class="btn-gold w-100 text-center mt-3">
+                    <i class="fa-solid fa-cart-shopping"></i>
+                    BUY HUNTER BUNDLE
+                </a>
+
+            </div>
 
         </div>
 
@@ -1494,6 +1723,8 @@ function selectDuration(card, product, duration, price) {
 
     if (duration === '1month') {
         durationName = 'ONE MONTH';
+    } else if (duration === '3month') {
+        durationName = 'THREE MONTHS';
     } else if (duration === '6month') {
         durationName = 'SIX MONTHS';
     } else if (duration === '1year') {
@@ -1503,7 +1734,31 @@ function selectDuration(card, product, duration, price) {
     }
 
     document.getElementById('selectedDuration-' + product).innerText = durationName;
-    document.getElementById('selectedPrice-' + product).innerText = '₹' + price.toLocaleString('en-IN');
+    if (product === 'hunter-bundle') {
+        const bundleDollarPrices = {
+            5999: 60,
+            10999: 101,
+            19999: 200,
+            29999: 300
+        };
+        document.getElementById('selectedPrice-' + product).innerHTML =
+            '₹' + price.toLocaleString('en-IN') +
+            ' <small>($' + bundleDollarPrices[price] + ')</small>';
+    } else if (product === 'hunter-v1' || product === 'hunter-v2' || product === 'hunter-v3') {
+        const indicatorDollarPrices = {
+            2999: 30,
+            5999: 60,
+            11999: 101,
+            19999: 200,
+            12999: 200
+        };
+        document.getElementById('selectedPrice-' + product).innerHTML =
+            '₹' + price.toLocaleString('en-IN') +
+            ' <small>($' + indicatorDollarPrices[price] + ')</small>';
+    } else {
+        document.getElementById('selectedPrice-' + product).innerText =
+            '₹' + price.toLocaleString('en-IN');
+    }
 
     document.getElementById('buyDurationButton-' + product).href =
         'checkout.html?product=' + product +
