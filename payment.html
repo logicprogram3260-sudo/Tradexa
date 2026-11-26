@@ -15,7 +15,24 @@
       background-color: #d4af37 !important;
       color: #000 !important;
     }
+    #paymentScreenshot {
+      background-color: #0b1524;
+      border-color: rgba(212, 175, 55, 0.55) !important;
+    }
+    #paymentScreenshot::file-selector-button {
+      background-color: #d4af37;
+      color: #050811;
+      border: 0;
+      border-radius: 0.25rem;
+      font-weight: 600;
+    }
+    #screenshotPreview {
+      max-width: 100%;
+      max-height: 220px;
+      object-fit: contain;
+    }
   </style>
+  <link rel="stylesheet" href="page-transitions.css">
 </head>
 <body>
 
@@ -95,17 +112,22 @@
 
         <hr class="border-secondary">
 
-        <!-- Verification Inputs -->
+        <!-- Order Verification -->
         <div class="text-start">
           <div class="mb-2">
-            <label class="form-label small text-secondary mb-1">TradingView Username (For Access)</label>
+            <label for="tvUsername" class="form-label small text-secondary mb-1">TradingView Username (For Access)</label>
             <input type="text" id="tvUsername" class="form-control form-control-sm bg-dark text-white border-secondary" placeholder="Enter your TradingView ID" required>
           </div>
           <div class="mb-3">
-            <label class="form-label small text-secondary mb-1">UTR Number / Transaction Hash (TxID)</label>
-            <input type="text" id="txHash" class="form-control form-control-sm bg-dark text-white border-secondary" placeholder="Paste UPI Ref ID or Crypto TxID" required>
+            <label for="paymentScreenshot" class="form-label small text-secondary mb-1">Payment Screenshot</label>
+            <input type="file" id="paymentScreenshot" class="form-control form-control-sm text-white" accept="image/*" aria-describedby="screenshotUploadStatus">
+            <div class="form-text text-secondary">Your screenshot will be uploaded to Cloudinary and included with your order details.</div>
+            <div id="screenshotPreviewWrap" class="d-none mt-2 text-center">
+              <img id="screenshotPreview" class="rounded border border-secondary" alt="Selected payment screenshot preview">
+            </div>
+            <div id="screenshotUploadStatus" class="small text-secondary mt-2" role="status" aria-live="polite">Select an image to upload.</div>
           </div>
-          <button class="btn btn-warning w-100 fw-bold text-dark" onclick="submitOrder()">
+          <button type="button" id="submitOrderButton" class="btn btn-warning w-100 fw-bold text-dark" onclick="submitOrder()" disabled>
             Confirm & Submit Order
           </button>
         </div>
@@ -116,7 +138,10 @@
 </div>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="page-transitions.js"></script>
 <script>
+let uploadedScreenshotUrl = '';
+
 function copyAddress(elementId) {
   const copyText = document.getElementById(elementId);
   copyText.select();
@@ -126,23 +151,105 @@ function copyAddress(elementId) {
 
 function submitOrder() {
   const tvUser = document.getElementById('tvUsername').value.trim();
-  const txId = document.getElementById('txHash').value.trim();
   const product = document.getElementById('modalProductName').innerText;
   const plan = document.getElementById('modalPlanName').innerText;
   const inr = document.getElementById('modalInrPrice').innerText;
   const usdt = document.getElementById('modalUsdtPrice1').innerText;
 
-  if (!tvUser || !txId) {
-    alert("ദയവായി TradingView Username-ഉം Transaction ID-യും നൽകുക.");
+  if (!uploadedScreenshotUrl) {
+    alert("Please upload a payment screenshot and wait for the upload to finish.");
+    return;
+  }
+
+  if (!tvUser) {
+    alert("Please enter your TradingView username.");
     return;
   }
 
   const whatsappNumber = "918943623260";
-  const msg = `New Indicator Order:%0AProduct: ${product}%0APlan: ${plan}%0AINR: ${inr}%0AUSDT: ${usdt}%0ATradingView ID: ${tvUser}%0ATxID/UTR: ${txId}`;
-  window.open(`https://wa.me/${whatsappNumber}?text=${msg}`, '_blank');
+  const message = `New Indicator Order:\nProduct: ${product}\nPlan: ${plan}\nINR: ${inr}\nUSDT: ${usdt}\nTradingView ID: ${tvUser}\nPayment Screenshot: ${uploadedScreenshotUrl}`;
+  const whatsappUrl = new URL(`https://wa.me/${whatsappNumber}`);
+  whatsappUrl.searchParams.set('text', message);
+  window.open(whatsappUrl.toString(), '_blank');
 }
 
 document.addEventListener('DOMContentLoaded', function () {
+  const screenshotInput = document.getElementById('paymentScreenshot');
+  const screenshotPreviewWrap = document.getElementById('screenshotPreviewWrap');
+  const screenshotPreview = document.getElementById('screenshotPreview');
+  const uploadStatus = document.getElementById('screenshotUploadStatus');
+  const submitButton = document.getElementById('submitOrderButton');
+  let activeUploadController = null;
+  let uploadSequence = 0;
+  let previewObjectUrl = '';
+
+  screenshotInput.addEventListener('change', async function () {
+    const file = screenshotInput.files[0];
+    uploadSequence += 1;
+    const currentUpload = uploadSequence;
+
+    if (activeUploadController) activeUploadController.abort();
+    activeUploadController = null;
+    uploadedScreenshotUrl = '';
+    submitButton.disabled = true;
+
+    if (previewObjectUrl) URL.revokeObjectURL(previewObjectUrl);
+    previewObjectUrl = '';
+
+    if (!file) {
+      screenshotPreview.removeAttribute('src');
+      screenshotPreviewWrap.classList.add('d-none');
+      uploadStatus.textContent = 'Select an image to upload.';
+      uploadStatus.className = 'small text-secondary mt-2';
+      return;
+    }
+
+    if (file.type && !file.type.startsWith('image/')) {
+      screenshotPreview.removeAttribute('src');
+      screenshotPreviewWrap.classList.add('d-none');
+      uploadStatus.textContent = 'Error: Please select an image file.';
+      uploadStatus.className = 'small text-danger mt-2';
+      return;
+    }
+
+    previewObjectUrl = URL.createObjectURL(file);
+    screenshotPreview.src = previewObjectUrl;
+    screenshotPreviewWrap.classList.remove('d-none');
+    uploadStatus.textContent = 'Uploading screenshot...';
+    uploadStatus.className = 'small text-secondary mt-2';
+
+    const controller = new AbortController();
+    activeUploadController = controller;
+    const formData = new FormData();
+    formData.append('file', file);
+    formData.append('upload_preset', 'tradexa_payments');
+
+    try {
+      const response = await fetch('https://api.cloudinary.com/v1_1/Ozein6tl/image/upload', {
+        method: 'POST',
+        body: formData,
+        signal: controller.signal
+      });
+      const data = await response.json();
+
+      if (!response.ok || !data.secure_url) {
+        throw new Error(data.error?.message || 'Cloudinary did not return a secure image URL.');
+      }
+
+      if (currentUpload !== uploadSequence) return;
+      uploadedScreenshotUrl = data.secure_url;
+      submitButton.disabled = false;
+      uploadStatus.textContent = 'Screenshot uploaded!';
+      uploadStatus.className = 'small text-success mt-2';
+    } catch (error) {
+      if (controller.signal.aborted || currentUpload !== uploadSequence) return;
+      uploadStatus.textContent = `Error uploading screenshot: ${error.message}`;
+      uploadStatus.className = 'small text-danger mt-2';
+    } finally {
+      if (currentUpload === uploadSequence) activeUploadController = null;
+    }
+  });
+
   const params = new URLSearchParams(window.location.search);
   let checkout = {
     product: 'Tradexa Hunter V1',
@@ -183,7 +290,7 @@ document.addEventListener('DOMContentLoaded', function () {
     const redirectToIndicators = function () {
       if (redirectingToIndicators) return;
       redirectingToIndicators = true;
-      window.location.href = 'indicator.html';
+      window.navigateWithTransition('indicator.html');
     };
 
     modalElement.addEventListener('hidden.bs.modal', redirectToIndicators);

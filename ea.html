@@ -395,6 +395,7 @@
 
     </style>
 
+    <link rel="stylesheet" href="page-transitions.css">
 </head>
 
 
@@ -1134,6 +1135,7 @@
 <script
     src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js">
 </script>
+<script src="page-transitions.js"></script>
 
 <script>
 function openCheckoutModal(productName, inrPrice, usdtPrice) {
@@ -1142,7 +1144,7 @@ function openCheckoutModal(productName, inrPrice, usdtPrice) {
     inr: inrPrice,
     usdt: usdtPrice
   });
-  window.location.href = `payment.html?${params.toString()}`;
+  window.navigateWithTransition(`payment.html?${params.toString()}`);
 }
 </script>
 

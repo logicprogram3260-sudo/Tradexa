@@ -537,7 +537,7 @@ body::before{
 /* mobile nav drawer */
 .main-nav.open{
   display:flex; position:fixed; top:0; right:0; height:100vh; width:78%; max-width:320px;
-  background:rgba(6,9,15,0.97); backdrop-filter:blur(20px); flex-direction:column; padding:100px 32px; gap:26px;
+  background:#05070c; flex-direction:column; padding:100px 32px; gap:26px;
   border-left:1px solid var(--border); z-index:45; font-size:17px;
 }
 

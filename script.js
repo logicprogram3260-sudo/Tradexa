@@ -21,8 +21,18 @@ document.addEventListener('DOMContentLoaded', () => {
   const menuToggle = document.getElementById('menuToggle');
   const mainNav = document.getElementById('mainNav');
   if (menuToggle && mainNav) {
-    menuToggle.addEventListener('click', () => {
+    menuToggle.addEventListener('touchstart', e => e.stopPropagation());
+    menuToggle.addEventListener('click', e => {
+      e.stopPropagation();
       mainNav.classList.toggle('open');
+    });
+    const closeOnOutside = e => {
+      if (!mainNav.contains(e.target)) mainNav.classList.remove('open');
+    };
+    document.addEventListener('touchstart', closeOnOutside);
+    document.addEventListener('click', closeOnOutside);
+    document.addEventListener('keydown', e => {
+      if (e.key === 'Escape') mainNav.classList.remove('open');
     });
     mainNav.querySelectorAll('.nav-link').forEach(link => {
       link.addEventListener('click', () => mainNav.classList.remove('open'));
